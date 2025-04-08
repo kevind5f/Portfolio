@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSite - Omegalull</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #181818;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: #ff4d4d;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            background-color: rgba(24, 24, 24, 0.95);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ff4d4d;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
+            background-color: #222;
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: 60%;
+            padding: 0 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero-image-container {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            max-width: 400px;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            border: 2px solid #555;
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* sombra profesional */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-image ime{
+            width: 100%;
+            height: 100%;
+            object-fit: none; /* Muestra toda la imagen sin recortes */
+            object-position: contain;
+        }
+        .hero-image:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .primary-button {
+            background-color: #ff4d4d;
+            color: white;
+        }
+
+        .primary-button:hover {
+            background-color: #ff3333;
+            transform: translateY(-2px);
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            border: 1px solid #666;
+            color: white;
+        }
+
+        .secondary-button:hover {
+            border-color: #ff4d4d;
+            color: #ff4d4d;
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ff4d4d;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-item {
+            background-color: #333;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .project {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            background-color: #222;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .project-image {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+            height: 100%;
+            min-height: 300px;
+            background-color: #444; /* Placeholder for project image */
+        }
+
+        .project-content {
+            grid-column: 2;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .project-tag {
+            padding: 5px 10px;
+            background-color: #333;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .social-links, .professional-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-button, .professional-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .social-button {
+            background-color: #333;
+            color: white;
+        }
+
+        .social-button:hover {
+            transform: translateX(5px);
+        }
+
+        .professional-button {
+            background-color: #2a2a2a;
+            color: white;
+            border: 1px solid #444;
+        }
+
+        .professional-button:hover {
+            background-color: #3a3a3a;
+            transform: translateX(5px);
+        }
+
+        .contact-form {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #333;
+            margin-top: 80px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 40px 0;
+            }
+            
+            .hero-content {
+                width: 100%;
+                order: 2;
+            }
+            
+            .hero-image-container {
+                width: 100%;
+                order: 1;
+                margin-bottom: 30px;
+            }
+            
+            .project {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-image {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            
+            .project-content {
+                grid-column: 1;
+                grid-row: 2;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">@OmegaLull</div>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About Me</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact Me</a>
+            </nav>
+        </header>
+
+        <section class="hero" id="about">
+            <div class="hero-content">
+                <h1>Web Developer and Systems Engineer</h1>
+                <p>I am an Information Systems Engineering student, passionate about technology and web development. My goal is to use technology to solve problems and create innovative solutions that positively impact people and build technology tools that make a difference and reflect my commitment to quality and creativity. Explore my website to learn more about me and what I have to offer</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="button primary-button">Projects</a>
+                    <a href="#contact" class="button secondary-button">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="hero-image">
+                    <img src="img/OmegaLull.png" alt="OmegaLull Imagen">
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">HTML5</div>
+                        <div class="skill-item">CSS3</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">Sass</div>
+                        <div class="skill-item">Tailwind</div>
+                        <div class="skill-item">Bootstrap</div>
+                        <div class="skill-item">Grid Layout</div>
+                        <div class="skill-item">Flexbox</div>
+                        <div class="skill-item">Vue.js</div>
+                        <div class="skill-item">UX/UI Design</div>
+                        <div class="skill-item">Responsive Design</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">C#</div>
+                        <div class="skill-item">Java</div>
+                        <div class="skill-item">Rust</div>
+                        <div class="skill-item">SQL Server</div>
+                        <div class="skill-item">MongoDB</div>
+                        <div class="skill-item">Flask</div>
+                        <div class="skill-item">Node.js</div>
+                        <div class="skill-item">Express.js</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Control de Versiones</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">Git</div>
+                        <div class="skill-item">GitHub</div>
+                        <div class="skill-item">GitLab</div>
+                        <div class="skill-item">GitKraken</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Gestión</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">Scrum</div>
+                        <div class="skill-item">Notion</div>
+                        <div class="skill-item">Obsidian</div>
+                        <div class="skill-item">PowerBI</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Microsoft</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">MS Project</div>
+                        <div class="skill-item">Word</div>
+                        <div class="skill-item">Excel</div>
+                        <div class="skill-item">PowerPoint</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Idiomas</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">Español (Nativo)</div>
+                        <div class="skill-item">Inglés (B2)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Proyectos</h2>
+            <div class="projects-container">
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/NoteOfTheDay.png" alt="Note of the Day" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Note of the day</h3>
+                        <p class="project-description">This page features a modern, interactive web design that combines stylistic elements and 3D visual effects to create an engaging and dynamic experience. The design includes a floating card that reacts to the hover of the cursor.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="NoteOfTheDay/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/NewYork.png" alt="New York Skyline" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Skyline New York</h3>
+                        <p class="project-description">This website uses a clean, minimalist design to highlight an animated header that integrates images of skylines and a dynamic scrolling effect.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="NewYork/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/Online.png" alt="Technology store" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Online technology store</h3>
+                        <p class="project-description">This technology product page features a clean, modern design that highlights the company's main features. Its minimalist approach allows key information and products to stand out clearly, providing an attractive and easy-to-navigate visual experience for users.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="tiendaOnline/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/Cards.png" alt="Cards" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cards</h3>
+                        <p class="project-description">The design uses smooth transitions and a blur effect on the content to create an immersive visual experience. It is ideal for showcasing profiles, projects or services in a stylish and professional manner.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="Cards/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/VideoGames.png" alt="VideoGames" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Video Games</h3>
+                        <p class="project-description">Visually appealing and easy to navigate website that provides users with an interactive experience while exploring video game related content. The project is fully functional and adapts to different devices, providing an accessible and friendly design.
+</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="BlogVideoJuegos/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/Galery.png" alt="Galery" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Galery</h3>
+                        <p class="project-description">Interactive image gallery, simple but visually appealing, where images are clearly visible and stand out when hovering over them.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="Galery/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/Testi.png" alt="Testimonials" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Testimonials</h3>
+                        <p class="project-description">Visually appealing and user-friendly testimonials section, where users can read featured reviews from other customers or employees. This design focuses on enhancing the user experience through interactivity and smooth transitions.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="Testimonials/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/Apple.png" alt="Apple" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Apple</h3>
+                        <p class="project-description">This design is simple and focused on the visual presentation of the products, with a clean and attractive style that uses large images and brief texts to capture the visitor's attention.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="apple/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/IceCream.png" alt="IceCream" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">IceCream</h3>
+                        <p class="project-description">This web design stands out for its fresh, modern and friendly style. With an attractive visual approach thanks to large images of products and environments, the site is fully adapted to be visually appealing, with quality images, well-defined call-to-action buttons and a clean and organized approach that facilitates navigation.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="helados/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/Hamburguer.png" alt="Hamburguer" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Restaurant</h3>
+                        <p class="project-description">Burger Page stands out for its bold, modern and appetizing style. The site offers a striking visual experience with vibrant images of the burgers and the restaurant environment, while its design is fully optimized to engage the user, with high-quality photos, prominent call-to-action buttons and an organized structure that makes navigation easy.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="retaurant/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-image">
+                        <img src="img/MiniPaint.png" alt="Paint" style="height: 100%; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Mini Paint</h3>
+                        <p class="project-description">Paint-style drawing application features a simple, intuitive and easy-to-use interface. The site is optimized to offer a smooth experience, with accessible drawing tools, a large canvas to work on and well-defined action buttons, all in a clean and organized environment that makes it easy to navigate and use.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                        </div>
+                        <a href="MiniPaint/index.html" class="button primary-button">Ver Proyecto</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Redes Sociales</h3>
+                    <div class="social-links">
+                        <a href="https://wa.me/+51995094630" class="social-button">
+                            <span>WhatsApp</span>
+                        </a>
+                        <a href="https://www.instagram.com/omegalull.1/" class="social-button">
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100068875626308" class="social-button">
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+
+                    <h3>Perfil Profesional</h3>
+                    <div class="professional-links">
+                        <a href="https://github.com/kevind5f" class="professional-button">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/kevin-felices-ledesma-3210991bb/" class="professional-button">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="cv.Omega.pdf" class="button primary-button">Descargar CV</a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Tu email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" placeholder="Escribe tu mensaje aquí..."></textarea>
+                        </div>
+                        <button type="submit" class="button primary-button">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025 @OmegaLull - Web Developer and Systems Engineer</p>
+        </footer>
+    </div>
+</body>
+</html>

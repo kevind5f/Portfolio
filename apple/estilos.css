@@ -1,0 +1,378 @@
+/** VARIABLES */
+:root{
+     --text-color: #1D1D1F;
+     --text-color-claro: #86868B;
+     --color-enlaces: #06C;
+     --color-background: #FAFAFA;
+}
+
+
+/** ESTILOS DE SCROLL BAR */
+body::-webkit-scrollbar{
+     width: 8px;
+}
+
+body::-webkit-scrollbar-thumb{
+     background: var(--text-color);
+}
+
+
+
+
+/** GENERALES  */
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+     background: var(--color-background);
+}
+
+html{
+     scroll-behavior: smooth;
+}
+
+a{
+     text-decoration: none;
+}
+
+h1, h2, h3{
+     line-height: 1.2;
+     font-weight: 600;
+     color: var(--text-color);
+     text-align: center;
+}
+
+h1{
+     font-size: 48px;
+     margin-top: 10px;
+}
+
+h2{
+     font-size: 24px;
+}
+
+h3{
+     font-size: 21px;
+     font-weight: 400;
+     color: var(--text-color-claro);
+     margin-top: .5em;
+}
+
+img{
+     width: 100%;
+}
+
+section{
+     position: relative;
+     width: 100%;
+     height: 100vh;
+}
+
+.text-container{
+    flex-direction: column; 
+}
+
+.enlace-info{
+     font-size: 21px;
+     margin-top: 30px;
+     color: var(--color-enlaces);
+}
+
+.enlace-info:hover{
+     text-decoration: underline;
+}
+
+
+
+/** ESTILOS GRID  */
+.grid{
+     display: grid;
+     grid-template-columns: repeat(12, 1fr);
+     gap: 20px;
+     height: 100%;
+}
+
+.grid div{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.span5{
+     grid-column: span 5;
+}
+
+.span6{
+     grid-column: span 6;
+}
+
+.span7{
+     grid-column: span 7;
+}
+
+.span9{
+     grid-column: span 9;
+}
+
+.span12{
+     grid-column: span 12;
+}
+
+
+
+/** MENU DE NAVEGACION */
+nav{
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 44px;
+     z-index: 3;
+     background: rgba(0, 0, 0, 0.8);
+}
+
+nav .enlaces{
+     position: relative;
+     height: 100%;
+     padding: 0 22px;
+     margin: 0 auto;
+     max-width: 980px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+
+nav .enlaces img{
+     width: 16px;
+}
+
+nav .enlaces a{
+     color: #F5F5F7;
+     font-size: 14px;
+     padding: 0 10px;
+     opacity: .8;
+     cursor: pointer;
+     transition: all .3s;
+}
+
+nav .enlaces a:hover{
+     opacity: 1;
+}
+
+
+
+/** HEADER */
+header{
+     width: 100%;
+     height: calc(100vh - 44px);
+     margin: 44px 0 0 0;
+     background: #F2F2F2;
+}
+
+header img{
+     width: 85%;
+}
+
+header .text-container{
+     padding: 30px 0 0 0;
+     justify-content: flex-end !important;
+}
+
+header .img-container{
+     align-items: flex-end !important;
+}
+
+
+
+/** SERVICIOS  */
+.service{
+     background: url(img/image2.jpg);
+     background-size: cover;
+     background-position: center;
+     background-attachment: fixed;
+}
+
+.service::before{
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.95);
+}
+
+
+.service .grid{
+     width: 85%;
+     margin: 0 auto;
+}
+
+.service .contenedor{
+     flex-direction: column;
+     z-index: 1;
+}
+
+.service img{
+     width: 250px;
+     height: 250px;
+     margin: 25px 0;
+}
+
+.service .text-container{
+     width: 60%;
+     text-align: center;
+}
+
+.service .text-container h2{
+     color: #FFF;
+     font-size: 28px;
+     font-weight: 400;
+}
+
+
+
+/** PRODUCTOS  */
+
+
+/*? IPAD  */
+.ipad{
+     background: #FFF;
+}
+
+.ipad img{
+     height: 85%;
+     object-fit: cover;
+     object-position: left;
+}
+
+.ipad .text-container{
+     grid-column: 2 / 4;
+     align-items: flex-start;
+}
+
+
+
+
+/*? WATCH  */
+.watch{
+     padding: 30px 50px 0 50px;
+}
+
+.watch .text-container img{
+     width: 100px;
+}
+
+
+
+
+/*? AIRPODS  */
+.airpods{
+     height: auto;
+}
+
+
+
+
+
+/** MUSIC/TV  */
+.musictv{
+     padding: 30px;
+}
+
+.musictv .text-container{
+     background: #000;
+}
+
+.musictv .text{
+     height: 50%;
+     width: 50%;
+     padding: 60px 0 0 0;
+     text-align: center;
+     flex-direction: column;
+}
+
+.musictv .imagen{
+     height: 100%;
+     align-items: flex-end;
+}
+
+.musictv .text-container .icon{
+     width: 100px;
+     height: 40px;
+}
+
+.musictv .text-container h3{
+     color:  #FFF;
+}
+
+.musictv .text-container .enlace-info{
+     margin: 10px 0 30px 0;
+}
+
+.musictv .ct2{
+     background: #FFF;
+}
+
+.musictv .ct2 .icon{
+     width: 150px;
+}
+
+.musictv .ct2 h3{
+     color:  var(--text-color);
+}
+
+
+
+
+
+/** IMAC  */
+.imac{
+     background: #FFF;
+     padding: 50px 0;
+}
+
+.imac img{
+     width: 50%;
+}
+
+.imac h1{
+     font-size: 56px;
+}
+
+.imac h2{
+     font-size: 28px;
+     font-weight: 400;
+}
+
+.imac h3{
+     letter-spacing: 0.5px;
+     font-size: 18px;
+}
+
+
+
+
+/** FOOTER  */
+footer{
+     width: 100%;
+     height: 44px;
+     background: rgba(0, 0, 0, 0.8);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+footer img{
+     width: 16px;
+     opacity: .2;
+     transition: all .5s;
+}
+
+footer:hover img{
+     opacity: 1;
+}
