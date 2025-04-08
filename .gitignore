@@ -1,0 +1,21 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de entorno
+.env
+
+# Node.js (si lo usas)
+node_modules/
+npm-debug.log
+
+# VS Code
+.vscode/
+
+# Archivos temporales
+*.log
+*.tmp
+*.bak
+
+# Cache del navegador
+.cache/
