@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplocacion de Notas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mis Notas</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="app-container">
+            <!-- Sidebar con lista de notas -->
+            <div class="notas-lista">
+                <div class="notas-header">
+                    <h2>Notas</h2>
+                    <button class="btn-nueva" id="nuevaNota">+ Nueva</button>
+                </div>
+                <div class="notas-items" id="notasLista">
+                    <!-- Las notas se generarán dinámicamente aquí -->
+                </div>
+            </div>
+            
+            <!-- Editor de notas -->
+            <div class="nota-editor" id="notaEditor">
+                <div class="editor-header">
+                    <input type="text" class="editor-input" id="notaTitulo" placeholder="Título de la nota">
+                    <div class="editor-actions">
+                        <button class="btn btn-guardar" id="guardarNota">Guardar</button>
+                        <button class="btn btn-eliminar" id="eliminarNota">Eliminar</button>
+                    </div>
+                </div>
+                <textarea class="editor-textarea" id="notaContenido" placeholder="Escribe tu nota aquí..."></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contenedor para mensajes -->
+    <div class="mensajes" id="mensajes"></div>
+    <script src="main.js"></script>
+</body>
+</html>

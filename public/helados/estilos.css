@@ -1,0 +1,432 @@
+@import url(https://fonts.googleapis.com/css?family=Teko:300,regular,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script:regular,500,600,700);
+
+
+/** VARIABLES  */
+:root{
+     --font-principal: 'Teko';
+     --font-cursiva: 'Dancing Script';
+     --gris600: #2F2E2E;
+     --gris200: #706D6D;
+}
+
+
+/** SCROLL BAR */
+body::-webkit-scrollbar{
+     width: 8px;
+}
+
+body::-webkit-scrollbar-thumb{
+     background-color: #F7CA37;
+     border-radius: 50px;
+}
+
+
+
+
+
+/** GENERALES */
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: Arial, Helvetica, sans-serif;
+     color: var(--gris600);
+}
+
+a{
+     text-decoration: none;
+}
+
+h1, h2{
+     font-family: var(--font-principal);
+}
+
+h3{
+     font-family: var(--font-cursiva);
+}
+
+
+/** BOTONES */
+.btn{
+     background: transparent;
+     width: 130px;
+     height: 42px;
+     font-size: 20px;
+     text-transform: uppercase;
+     cursor: pointer;
+     transition: all .5s;
+}
+
+.btn.light{
+     color:  #FFF;
+     border: 2px solid #FFF;
+}
+
+.btn.dark{
+     color:  var(--gris600);
+     border: 2px solid var(--gris600);
+}
+
+.btn:hover{
+     background: var(--gris600);
+     border: 2px solid var(--gris600);
+     color:  #FFF;
+}
+
+
+
+
+
+
+
+/** GRID */
+.grid{
+     display: grid;
+     grid-template-columns: repeat(12, 1fr);
+     grid-template-rows: auto;
+     height: 100%;
+}
+
+.container-center{
+     width: 85%;
+     margin: 0 auto;
+}
+
+.span6{
+     grid-column: span 6;
+}
+
+
+/** SECCIONES */
+section{
+     position: relative;
+     width: 100%;
+     height: 100vh;
+}
+
+section.full::before{
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%; 
+     background-attachment: fixed !important;
+     background-position: center !important;
+}
+
+
+
+
+/** CONTENEDOR BACKGROUND  */
+.background{
+     background-size: cover !important;
+     background-position: right !important;
+}
+
+
+
+/** TEXT CONTENT */
+.text-content{
+     position: relative;
+     width: 100%;
+     height: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     z-index: 1;
+}
+
+
+/*? Full */
+.text-content.full{
+     grid-column: span 12;
+}
+
+.text-content.full h1,
+.text-content.full h2{
+     color:  #FFF;
+     text-transform: uppercase;
+     text-align: center;
+}
+
+.text-content.full h1{
+     font-size: 115px;
+     letter-spacing: 20px;
+     line-height: 1.5;
+     font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.text-content.full h2{
+     font-size: 50px;
+     letter-spacing: 2px;
+     font-weight: 100;
+     line-height: 0.1;
+}
+
+
+
+/*? Lateral  */
+.text-content.lateral{
+     padding: 0 50px;
+}
+
+.text-content.lateral h1{
+     font-size: 55px;
+     font-weight: 400;
+     letter-spacing: 2px;
+     line-height: 1;
+     text-align: center;
+}
+
+.text-content.lateral h3{
+     font-size: 40px;
+     font-weight: 600;
+     text-align: center;
+}
+
+.text-content.lateral p{
+     font-size: 20px;
+     margin: 20px 0;
+     text-align: center;
+     letter-spacing: 0.5px;
+}
+
+
+
+
+
+/** MENU DE NAVEGACION */
+nav{
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 50px;
+     background: rgba(249, 219, 121, 0.745);
+     z-index: 3;
+}
+
+nav .grid{
+     justify-items: start;
+     align-items: center;
+}
+
+nav .enlaces{
+     grid-column: span 10;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+nav .enlaces a{
+     margin-right: 20px;
+     font-family: var(--font-principal);
+     font-size: 20px;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+     transition:  all .5s;
+}
+
+nav .enlaces a:hover{
+     color: var(--gris200);
+}
+
+
+/*? Sociales */
+.sociales{
+     grid-column: span 2;
+     display: flex;
+     justify-content: flex-end;
+     width: 100%;
+}
+
+.sociales a{
+     width: 30px;
+     height: 30px;
+     border-radius: 50%;
+     background: #000;
+     color: #FFF;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+
+
+/** HEADER */
+header{
+     position: relative;
+     width: 100%;
+     height: calc(100vh + 50px);
+     background: #F9DB79;
+}
+
+header::before{
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: url(img/image1.webp);
+     background-repeat: no-repeat;
+     background-position: center;
+}
+
+header .grid{
+     justify-items: center;
+     align-items: center;
+}
+
+header .text-content{
+     padding: 200px 0 0 0;
+}
+
+header .text-content h3{
+     position: absolute;
+     bottom: 50px;
+     right: 0;
+     font-size: 50px;
+     font-weight: 700;
+     color:  #000;
+}
+
+
+
+/** SABORES */
+.sabores div.background{
+     background: url(img/image2.webp);
+}
+
+
+
+/** ESPECIAL */
+.especial{
+     background: #B5E8D5;
+}
+
+.especial::before{
+     background: url(img/image3.webp);
+}
+
+
+
+/** LUGAR  */
+.lugar .background{
+     background: url(img/image4.webp);
+}
+
+
+
+/** EVENTOS  */
+.eventos{
+     background: #FFBFB3;
+}
+
+.eventos::before{
+     background: url(img/image5.webp);
+}
+
+.eventos .btn{
+     width: 200px;
+}
+
+
+
+/** POSTRES  */
+.postres .background{
+     background: url(img/image6.webp);
+}
+
+
+
+/** HELADOS  */
+.helado{
+     height: 115vh;
+     background: url(img/image7.webp), #B5E8D5;
+     background-attachment: fixed;
+     display: flex;
+}
+
+.helado img{
+     width: 100%;
+     object-fit: cover;
+}
+
+
+
+/** FOOTER */
+footer{
+     width: 100%;
+     height: 400px;
+}
+
+footer .grid{
+     grid-template-columns: repeat(5, 1fr);
+     gap: 20px;
+     justify-items: center;
+     align-content: center;
+}
+
+footer h2{
+     font-size: 28px;
+     font-weight: 400;
+     text-transform: uppercase;
+}
+
+footer p,
+footer ul, 
+footer input{
+     margin: 10px 0;
+}
+
+
+footer ul{
+     list-style: none;
+}
+
+footer ul li a:hover{
+     text-decoration: underline;
+}
+
+footer input{
+     width: 100%;
+     height: 40px;
+     padding: 0 20px;
+}
+
+footer input::placeholder{
+     letter-spacing: 1px;
+     color: var(--gris600);
+}
+
+footer .btn{
+     width: 100%;
+}
+
+footer .sociales{
+     justify-content: flex-start;
+}
+
+
+
+/** FOOTER COPY  */
+div.copy{
+     width: 100%;
+     height: 35px;
+     background: #000;
+     display: grid;
+     grid-template-columns: 100%;
+     justify-items: center;
+     align-items: center;
+}
+
+div.copy p{
+     color: rgba(255, 2552, 255, 0.5);
+     font-size: 15px;
+     font-weight: 600;
+}

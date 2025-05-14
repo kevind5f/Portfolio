@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px 0;
+  }
+  #main {
+    width: 900px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 8px;
+  }
+  #paleta {
+    width: 100%;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .control-group {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  .tab-content {
+    display: none;
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+  }
+  .tab-content.active {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tabs {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .tab {
+    padding: 8px 15px;
+    background-color: #eee;
+    cursor: pointer;
+    border-radius: 4px 4px 0 0;
+    margin-right: 5px;
+    font-size: 14px;
+  }
+  .tab.active {
+    background-color: #3498db;
+    color: white;
+  }
+  b {
+    margin-right: 10px;
+    font: 16px Verdana;
+  }
+  input[type="color"] {
+    width: 40px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+  }
+  input[type="number"], select {
+    width: 60px;
+    height: 30px;
+    padding: 5px;
+  }
+  select {
+    width: auto;
+  }
+  .btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .btn i {
+    font-size: 16px;
+  }
+  .btn-primary {
+    background-color: #3498db;
+    color: white;
+  }
+  .btn-warning {
+    background-color: #f39c12;
+    color: white;
+  }
+  .btn-danger {
+    background-color: #e74c3c;
+    color: white;
+  }
+  .btn-success {
+    background-color: #2ecc71;
+    color: white;
+  }
+  .btn-dark {
+    background-color: #34495e;
+    color: white;
+  }
+  .btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+  }
+  .btn:hover {
+    opacity: 0.9;
+  }
+  #canvas-container {
+    position: relative;
+    margin: 0 auto;
+    width: 800px;
+    height: 500px;
+  }
+  #canvas {
+    border: 1px solid #000;
+    cursor: crosshair;
+    border-radius: 4px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+  }
+  .form-row {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+    width: 100%;
+  }
+  .tool-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #f9f9f9;
+  }
+  .tool-btn i {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  .tool-btn span {
+    font-size: 12px;
+    text-align: center;
+  }
+  .tool-btn:hover {
+    background-color: #e8f4fc;
+  }
+  .tool-btn.active {
+    background-color: #3498db;
+    color: white;
+  }
+  .color-presets {
+    display: flex;
+    gap: 5px;
+  }
+  .color-preset {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #ddd;
+  }
+  .color-preset:hover {
+    transform: scale(1.1);
+  }
+  #fileInput {
+    display: none;
+  }
+  #text-input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  .hidden {
+    display: none;
+  }
+  #undo-redo-container {
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
+  }
+  .stroke-pattern {
+    width: 50px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 5px;
+    background-color: white;
+    position: relative;
+    border-radius: 3px;
+  }
+  .stroke-pattern:after {
+    content: "";
+    position: absolute;
+    top: 13px;
+    left: 5px;
+    right: 5px;
+    height: 2px;
+    background-color: black;
+  }
+  .stroke-pattern.dashed:after {
+    border-top: 2px dashed black;
+    height: 0;
+  }
+  .stroke-pattern.dotted:after {
+    border-top: 2px dotted black;
+    height: 0;
+  }
+  .status-bar {
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+  }
