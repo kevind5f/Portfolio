@@ -1,158 +1,350 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Restaurant</title>
+     <meta name="description" content="Restaurant Food House - La mejor experiencia gastronómica con platos únicos y sabores auténticos">
+     <meta name="keywords" content="restaurant, comida, hamburguesas, menú, delivery, food house">
+     <title>Food House - Restaurant & Delivery</title>
      <link rel="stylesheet" href="css/estilos.css">
      <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
       <!-- Menu principal -->
-     <nav class="navbar">
-          <a href="#">Home</a></li>
-          <a href="#">Nosotros</a></li>
-          <a href="#">Menu</a></li>
-          <a href="#">Contacto</a></li>
+     <nav class="navbar" id="navbar">
+          <div class="nav-container">
+               <div class="nav-logo">
+                    <a href="#home" class="logo">
+                         <i class="fas fa-utensils"></i>
+                         <span>Food House</span>
+                    </a>
+               </div>
+               
+               <div class="nav-menu" id="nav-menu">
+                    <a href="#home" class="nav-link active">Inicio</a>
+                    <a href="#about" class="nav-link">Nosotros</a>
+                    <a href="#menu" class="nav-link">Menú</a>
+                    <a href="#contact" class="nav-link">Contacto</a>
+                    <button class="btn-order-mobile" onclick="openOrderModal()">
+                         <i class="fas fa-shopping-cart"></i>
+                         Ordenar
+                    </button>
+               </div>
+               
+               <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+               </div>
+          </div>
      </nav>
 
-
-      <!-- Header -->
-     <header class="header">
-          <div class="header__content"></div>
-            <h1 class="tprincipal">Restaurant</h1>
-            <h2 class="tsecundario">experiencia en la mejor comida</h2>
+     <!-- Header -->
+     <header class="header" id="home">
+          <div class="header__content">
+            <h1 class="tprincipal animate-fade-in">Food House</h1>
+            <h2 class="tsecundario animate-fade-in-delay">Experiencia en la mejor comida</h2>
+            <div class="header-buttons animate-fade-in-delay-2">
+                 <button class="btn-white" onclick="scrollToSection('menu')">
+                      <i class="fas fa-utensils"></i>
+                      Ver Menú
+                 </button>
+                 <button class="btn-primary" onclick="openOrderModal()">
+                      <i class="fas fa-shopping-cart"></i>
+                      Ordenar
+                 </button>
+            </div>
+          </div>
+          
+          <!-- Scroll indicator -->
+          <div class="scroll-indicator">
+               <div class="scroll-arrow">
+                    <i class="fas fa-chevron-down"></i>
+               </div>
           </div>
      </header>
 
-
      <!-- About -->
-     <section class="about box-center">
-          <h3 class="text-center">Nosotros</h3>
+     <section class="about box-center" id="about">
+          <h3 class="text-center animate-on-scroll">Sobre Nosotros</h3>
 
           <div class="about__container">
-               <div class="content">
+               <div class="content animate-on-scroll">
                     <h4>Este es <span class="text-primario">nuestro restaurant!</span></h4>
                     <p class="text-solid4 line-space">
-                    Morbi blandit nibh non augue sollicitudin condimentum. In
-                    vestibulum ac elit id porta. Praesent viverra augue vitae tortor
-                    ultricies pulvinar. Praesent laoreet nec nulla quis feugiat.
-                    Aenean vitae commodo tellus. Nulla ornare lacinia ipsum, quis
-                    placerat lectus tincidunt in.
+                    Desde 2010, Food House ha sido sinónimo de excelencia gastronómica. 
+                    Nuestros chefs expertos combinan ingredientes frescos y técnicas culinarias 
+                    innovadoras para crear experiencias únicas. Cada plato cuenta una historia 
+                    de pasión por la comida y dedicación al servicio excepcional.
                     </p>
      
                     <div class="icons marginy">
-                         <a href="#"><span class="fas fa-cheese"></span></a>
-                         <a href="#"><span class="fas fa-hamburger"></span></a>
-                         <a href="#"><span class="fas fa-pepper-hot"></span></a>
-                         <a href="#"><span class="fas fa-bread-slice"></span></a>
+                         <a href="#" class="icon-item" data-tooltip="Ingredientes Frescos">
+                              <span class="fas fa-cheese"></span>
+                         </a>
+                         <a href="#" class="icon-item" data-tooltip="Hamburguesas Gourmet">
+                              <span class="fas fa-hamburger"></span>
+                         </a>
+                         <a href="#" class="icon-item" data-tooltip="Especias Únicas">
+                              <span class="fas fa-pepper-hot"></span>
+                         </a>
+                         <a href="#" class="icon-item" data-tooltip="Pan Artesanal">
+                              <span class="fas fa-bread-slice"></span>
+                         </a>
+                    </div>
+                    
+                    <div class="stats-container">
+                         <div class="stat-item">
+                              <span class="stat-number" data-target="5000">0</span>
+                              <span class="stat-label">Clientes Satisfechos</span>
+                         </div>
+                         <div class="stat-item">
+                              <span class="stat-number" data-target="50">0</span>
+                              <span class="stat-label">Platos Únicos</span>
+                         </div>
+                         <div class="stat-item">
+                              <span class="stat-number" data-target="10">0</span>
+                              <span class="stat-label">Años de Experiencia</span>
+                         </div>
                     </div>
                </div>
      
-               <div class="container_image">
+               <div class="container_image animate-on-scroll">
                     <div class="image">
-                         <img src="img/image2.jpg" alt="">
+                         <img src="img/image2.jpg" alt="Nuestro restaurant Food House" loading="lazy">
+                         <div class="image-overlay">
+                              <div class="overlay-content">
+                                   <i class="fas fa-star"></i>
+                                   <span>4.8/5</span>
+                                   <p>Calificación de Clientes</p>
+                              </div>
+                         </div>
                     </div>
                </div>
           </div>
      </section>
-
 
      <!-- Ofertas -->
-     <section class="oferta">
-          <div class="oferta__content"></div>
-            <h1>Los mejores productos</h1>
-            <h2 class="tsecundario">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
-            <button class="btn-white">Ordena ahora</button>
+     <section class="oferta" id="offers">
+          <div class="oferta__content">
+            <h1 class="animate-on-scroll">Los Mejores Productos</h1>
+            <h2 class="tsecundario animate-on-scroll">Descubre nuestra selección premium de hamburguesas gourmet</h2>
+            <div class="offer-buttons animate-on-scroll">
+                 <button class="btn-white" onclick="scrollToSection('menu')">
+                      <i class="fas fa-utensils"></i>
+                      Ver Menú
+                 </button>
+                 <button class="btn-primary" onclick="openOrderModal()">
+                      <i class="fas fa-shopping-cart"></i>
+                      Ordenar
+                 </button>
+            </div>
           </div>
      </section>
-
 
      <!-- Menu -->
-     <section class="menu box-center">
-          <h3 class="text-center">Nuestro menú</h3>
+     <section class="menu box-center" id="menu">
+          <h3 class="text-center animate-on-scroll">Nuestro Menú</h3>
 
           <div class="menu__container">
-               <div class="card">
+               <div class="card animate-on-scroll" data-delay="0">
                     <div class="card-container">
+                         <div class="card-image">
+                              <img src="img/product1.jpg" alt="Hamburguesa Básica" loading="lazy">
+                         </div>
                          <h5 class="card-title text-center">Básica</h5>
-                         <button class="btn-primary">Ordenar ahora</button>
+                         <p class="card-description">Hamburguesa clásica con carne 100% de res, lechuga, tomate y nuestra salsa especial</p>
+                         <div class="card-price">$8.99</div>
+                         <button class="btn-primary" onclick="addToCart('Básica', 8.99)">
+                              <i class="fas fa-plus"></i>
+                              Agregar al Carrito
+                         </button>
                     </div>
                </div>
 
-               <div class="card">
+               <div class="card animate-on-scroll" data-delay="100">
                     <div class="card-container">
+                         <div class="card-image">
+                              <img src="img/product2.jpg" alt="Promoción 2x1" loading="lazy">
+                         </div>
                          <h5 class="card-title text-center">2 x 1</h5>
-                         <button class="btn-primary">Ordenar ahora</button>
+                         <p class="card-description">Dos hamburguesas por el precio de una. Perfecta para compartir</p>
+                         <div class="card-price">$12.99</div>
+                         <button class="btn-primary" onclick="addToCart('2x1', 12.99)">
+                              <i class="fas fa-plus"></i>
+                              Agregar al Carrito
+                         </button>
                     </div>
                </div>
 
-               <div class="card">
+               <div class="card animate-on-scroll" data-delay="200">
                     <div class="card-container">
-                         <h5 class="card-title text-center">Más vegetales</h5>
-                         <button class="btn-primary">Ordenar ahora</button>
+                         <div class="card-image">
+                              <img src="img/product3.jpg" alt="Más Vegetales" loading="lazy">
+                         </div>
+                         <h5 class="card-title text-center">Más Vegetales</h5>
+                         <p class="card-description">Hamburguesa vegetariana con portobello, aguacate y vegetales frescos</p>
+                         <div class="card-price">$10.99</div>
+                         <button class="btn-primary" onclick="addToCart('Más Vegetales', 10.99)">
+                              <i class="fas fa-plus"></i>
+                              Agregar al Carrito
+                         </button>
                     </div>
                </div>
 
-               <div class="card">
+               <div class="card animate-on-scroll" data-delay="300">
                     <div class="card-container">
-                         <h5 class="card-title text-center">Doble carne</h5>
-                         <button class="btn-primary">Ordenar ahora</button>
+                         <div class="card-image">
+                              <img src="img/product4.jpg" alt="Doble Carne" loading="lazy">
+                         </div>
+                         <h5 class="card-title text-center">Doble Carne</h5>
+                         <p class="card-description">Doble porción de carne, queso cheddar, bacon y salsa BBQ</p>
+                         <div class="card-price">$14.99</div>
+                         <button class="btn-primary" onclick="addToCart('Doble Carne', 14.99)">
+                              <i class="fas fa-plus"></i>
+                              Agregar al Carrito
+                         </button>
                     </div>
                </div>
 
-               <div class="card">
+               <div class="card animate-on-scroll" data-delay="400">
                     <div class="card-container">
-                         <h5 class="card-title text-center">Chesse & Bacon</h5>
-                         <button class="btn-primary">Ordenar ahora</button>
+                         <div class="card-image">
+                              <img src="img/product5.jpg" alt="Cheese & Bacon" loading="lazy">
+                         </div>
+                         <h5 class="card-title text-center">Cheese & Bacon</h5>
+                         <p class="card-description">Triple queso, bacon crujiente, cebolla caramelizada y salsa ranch</p>
+                         <div class="card-price">$16.99</div>
+                         <button class="btn-primary" onclick="addToCart('Cheese & Bacon', 16.99)">
+                              <i class="fas fa-plus"></i>
+                              Agregar al Carrito
+                         </button>
                     </div>
                </div>
 
-               <div class="card">
+               <div class="card animate-on-scroll" data-delay="500">
                     <div class="card-container">
-                         <h5 class="card-title text-center">Full burger</h5>
-                         <button class="btn-primary">Ordenar ahora</button>
+                         <div class="card-image">
+                              <img src="img/product6.jpg" alt="Full Burger" loading="lazy">
+                         </div>
+                         <h5 class="card-title text-center">Full Burger</h5>
+                         <p class="card-description">Nuestra hamburguesa más completa con todos los ingredientes premium</p>
+                         <div class="card-price">$19.99</div>
+                         <button class="btn-primary" onclick="addToCart('Full Burger', 19.99)">
+                              <i class="fas fa-plus"></i>
+                              Agregar al Carrito
+                         </button>
                     </div>
                </div>
           </div>
-
      </section>
 
+     <!-- Order Modal -->
+     <div class="modal" id="orderModal">
+          <div class="modal-content">
+               <div class="modal-header">
+                    <h3><i class="fas fa-shopping-cart"></i> Tu Pedido</h3>
+                    <button class="modal-close" onclick="closeOrderModal()">
+                         <i class="fas fa-times"></i>
+                    </button>
+               </div>
+               
+               <div class="modal-body">
+                    <div class="cart-items" id="cartItems">
+                         <div class="empty-cart">
+                              <i class="fas fa-shopping-basket"></i>
+                              <p>Tu carrito está vacío</p>
+                         </div>
+                    </div>
+                    
+                    <div class="cart-total">
+                         <span>Total:</span>
+                         <span id="cartTotal">$0.00</span>
+                    </div>
+               </div>
+               
+               <div class="modal-footer">
+                    <button class="btn-secondary" onclick="closeOrderModal()">Cancelar</button>
+                    <button class="btn-primary" onclick="checkout()">
+                         <i class="fas fa-credit-card"></i>
+                         Proceder al Pago
+                    </button>
+               </div>
+          </div>
+     </div>
 
      <!-- Footer -->
-     <footer class="footer bg-solid1">
+     <footer class="footer bg-solid1" id="contact">
           <div class="footer__container box-center">
                <div class="info">
                     <h5 class="text-lite text-primario margin-bottom">Food House</h5>
-                    <p class="line-space">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                    pulvinar hendrerit sapien ut porta. In faucibus lorem mollis diam
-                    faucibus laoreet</p>
+                    <p class="line-space">Más de 10 años sirviendo las mejores hamburguesas gourmet. 
+                    Nuestra pasión por la calidad y el sabor nos ha convertido en el restaurante 
+                    favorito de la ciudad.</p>
                     <div class="icons marginy">
-                         <a href=""><span class="fab fa-facebook-f"></span></a>
-                         <a href=""><span class="fab fa-twitter"></span></a>
-                         <a href=""><span class="fab fa-instagram"></span></a>
-                         <a href=""><span class="fab fa-youtube"></span></a>
-                         <a href=""><span class="fab fa-tiktok"></span></a>
+                         <a href="#" class="social-link" data-tooltip="Facebook">
+                              <span class="fab fa-facebook-f"></span>
+                         </a>
+                         <a href="#" class="social-link" data-tooltip="Twitter">
+                              <span class="fab fa-twitter"></span>
+                         </a>
+                         <a href="#" class="social-link" data-tooltip="Instagram">
+                              <span class="fab fa-instagram"></span>
+                         </a>
+                         <a href="#" class="social-link" data-tooltip="YouTube">
+                              <span class="fab fa-youtube"></span>
+                         </a>
+                         <a href="#" class="social-link" data-tooltip="TikTok">
+                              <span class="fab fa-tiktok"></span>
+                         </a>
                     </div>
                </div>
      
-     
                <div class="contact">
-                    <h5 class="text-lite text-primario margin-bottom">Contact Us</h5>
-                    <p>Address: XYZ road, Ranchi, Jharkhand, India</p>
-                    <p>Phone: +91 111-1111-111</p>
-                    <p>E-mail: ®OmegaLull</p>
+                    <h5 class="text-lite text-primario margin-bottom">Contáctanos</h5>
+                    <div class="contact-info">
+                         <p><i class="fas fa-map-marker-alt"></i> Calle Principal 123, Ciudad</p>
+                         <p><i class="fas fa-phone"></i> +1 234-567-8900</p>
+                         <p><i class="fas fa-envelope"></i> info@foodhouse.com</p>
+                         <p><i class="fas fa-clock"></i> Lun-Dom: 11:00 AM - 10:00 PM</p>
+                    </div>
      
-                    <h5 class="text-lite text-primario marginy">Payment Method</h5>
-                    <div  class="icons">
-                         <a href=""><span class="fab fa-cc-mastercard fa-2x"></span></a>
-                         <a href=""><span class="fab fa-cc-paypal fa-2x"></span></a>
-                         <a href=""><span class="fab fa-cc-stripe fa-2x"></span></a>
-                         <a href=""><span class="fab fa-cc-visa fa-2x"></span></a>
+                    <h5 class="text-lite text-primario marginy">Métodos de Pago</h5>
+                    <div class="icons">
+                         <a href="#" data-tooltip="Mastercard">
+                              <span class="fab fa-cc-mastercard fa-2x"></span>
+                         </a>
+                         <a href="#" data-tooltip="PayPal">
+                              <span class="fab fa-cc-paypal fa-2x"></span>
+                         </a>
+                         <a href="#" data-tooltip="Stripe">
+                              <span class="fab fa-cc-stripe fa-2x"></span>
+                         </a>
+                         <a href="#" data-tooltip="Visa">
+                              <span class="fab fa-cc-visa fa-2x"></span>
+                         </a>
                     </div>
                </div>
           </div>
+          
+          <div class="footer-bottom">
+               <p>&copy; 2024 Food House. Todos los derechos reservados.</p>
+          </div>
      </footer>
+
+     <!-- Loading Spinner -->
+     <div class="loading-spinner" id="loadingSpinner">
+          <div class="spinner"></div>
+     </div>
+
+     <!-- Back to Top Button -->
+     <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+          <i class="fas fa-chevron-up"></i>
+     </button>
+
+     <script src="js/main.js"></script>
 </body>
 </html>
