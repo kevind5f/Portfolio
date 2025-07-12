@@ -1,45 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Testimonios</title>
+     <meta name="description" content="Testimonios de clientes satisfechos - Descubre lo que dicen sobre nuestros servicios">
+     <meta name="keywords" content="testimonios, clientes, opiniones, satisfacción, reviews">
+     <title>Testimonios - Voces de Nuestros Clientes</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
      <style>
           *{
                margin: 0;
                padding: 0;
                box-sizing: border-box;
-               font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+               font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
           }
 
           body{
-               background: #ccc;
+               background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+               min-height: 100vh;
+               padding: 20px 0;
           }
 
+          /* Header */
+          .header {
+               text-align: center;
+               margin-bottom: 50px;
+               padding: 40px 20px;
+          }
 
+          .header h1 {
+               font-size: 3rem;
+               font-weight: 700;
+               color: #333;
+               margin-bottom: 15px;
+               text-transform: uppercase;
+               letter-spacing: 2px;
+          }
+
+          .header p {
+               font-size: 1.2rem;
+               color: #666;
+               max-width: 600px;
+               margin: 0 auto;
+               line-height: 1.6;
+          }
+
+          /* Controls */
+          .controls {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               gap: 20px;
+               margin-bottom: 40px;
+               flex-wrap: wrap;
+               padding: 0 20px;
+          }
+
+          .search-container {
+               position: relative;
+               max-width: 400px;
+               width: 100%;
+          }
+
+          .search-input {
+               width: 100%;
+               padding: 12px 20px 12px 50px;
+               border: 2px solid #ddd;
+               border-radius: 25px;
+               font-size: 16px;
+               transition: all 0.3s ease;
+               background: #fff;
+          }
+
+          .search-input:focus {
+               outline: none;
+               border-color: #BB0019;
+               box-shadow: 0 0 0 3px rgba(187, 0, 25, 0.1);
+          }
+
+          .search-icon {
+               position: absolute;
+               left: 20px;
+               top: 50%;
+               transform: translateY(-50%);
+               color: #999;
+               font-size: 18px;
+          }
+
+          .filter-buttons {
+               display: flex;
+               gap: 10px;
+               flex-wrap: wrap;
+               justify-content: center;
+          }
+
+          .filter-btn {
+               padding: 10px 20px;
+               border: 2px solid #BB0019;
+               background: transparent;
+               color: #BB0019;
+               border-radius: 25px;
+               cursor: pointer;
+               font-weight: 600;
+               transition: all 0.3s ease;
+               font-size: 14px;
+          }
+
+          .filter-btn:hover,
+          .filter-btn.active {
+               background: #BB0019;
+               color: #fff;
+               transform: translateY(-2px);
+               box-shadow: 0 5px 15px rgba(187, 0, 25, 0.3);
+          }
+
+          /* Grid Container */
           .grid-container{
-               padding: 70px;
+               padding: 20px;
                display: grid;
-               gap: 50px;
-               grid-template-columns: 1fr 1fr;
+               gap: 30px;
+               grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+               max-width: 1400px;
+               margin: 0 auto;
           }
 
-
+          /* Item Styles */
           .item{
                position: relative;
-               margin: 20px;
                background: #FFF;
-               padding: 70px 40px;
+               padding: 80px 40px 40px;
                text-align: center;
-               transition: all .5s;
+               transition: all 0.5s ease;
+               border-radius: 15px;
+               box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+               overflow: visible;
+               opacity: 0;
+               transform: translateY(30px);
+               animation: fadeInUp 0.6s ease forwards;
+               margin-top: 60px;
+          }
+
+          .item.visible {
+               opacity: 1;
+               transform: translateY(0);
+          }
+
+          @keyframes fadeInUp {
+               to {
+                    opacity: 1;
+                    transform: translateY(0);
+               }
           }
 
           .item:hover{
                background: #BB0019;
+               transform: translateY(-10px);
+               box-shadow: 0 15px 40px rgba(187, 0, 25, 0.3);
           }
-
 
           .item::before{
                content: '';
@@ -51,14 +173,14 @@
                background: url(img/quote.png);
                background-size: cover;
                opacity: 0.1;
-               transition: all .5s;
+               transition: all 0.5s ease;
+               z-index: 1;
           }
 
           .item:hover::before{
-               transform: translateY(-60px);
+               transform: translateY(-60px) scale(1.1);
                opacity: 1;
           }
-
 
           .item::after{
                content: '';
@@ -71,16 +193,14 @@
                background-size: cover;
                opacity: 0.1;
                transform: rotate(180deg);
-               transition: all .5s;
+               transition: all 0.5s ease;
+               z-index: 1;
           }
 
           .item:hover::after{
-               transform: rotate(180deg) translateY(-60px);
+               transform: rotate(180deg) translateY(-60px) scale(1.1);
                opacity: 1;
           }
-
-
-
 
           .item img{
                position: absolute;
@@ -92,96 +212,513 @@
                object-fit: cover;
                object-position: center;
                border-radius: 50%;
+               border: 4px solid #fff;
+               box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+               transition: all 0.5s ease;
+               z-index: 2;
+          }
+
+          .item:hover img {
+               transform: translateX(-50%) scale(1.1);
+               border-color: #fff;
+               box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
           }
 
           .item p{
-               transition: all .5s;
+               transition: all 0.5s ease;
+               font-size: 16px;
+               line-height: 1.6;
+               margin-bottom: 20px;
+               color: #555;
+               position: relative;
+               z-index: 2;
           }
 
           .item h3{
-               margin: 20px 0 0 0;
+               margin: 20px 0 5px 0;
                font-size: 18px;
                font-weight: 600;
                text-transform: uppercase;
-               transition: all .5s;
+               transition: all 0.5s ease;
+               color: #333;
+               position: relative;
+               z-index: 2;
           }
 
           .item h4{
                font-size: 14px;
-               font-weight: 600;
+               font-weight: 500;
                color: #BB0019;
-               transition: all .5s;
+               transition: all 0.5s ease;
+               position: relative;
+               z-index: 2;
           }
 
           .item:hover *{
                color: #FFF;
           }
 
-          
+          .item:hover h4 {
+               color: rgba(255, 255, 255, 0.8);
+          }
 
+          /* Rating Stars */
+          .rating {
+               display: flex;
+               justify-content: center;
+               gap: 5px;
+               margin: 15px 0;
+               position: relative;
+               z-index: 2;
+          }
 
+          .star {
+               color: #ffd700;
+               font-size: 18px;
+               transition: all 0.3s ease;
+          }
 
+          .item:hover .star {
+               color: #fff;
+               transform: scale(1.1);
+          }
+
+          /* Empty State */
+          .empty-state {
+               text-align: center;
+               padding: 60px 20px;
+               color: #666;
+               grid-column: 1 / -1;
+          }
+
+          .empty-state i {
+               font-size: 4rem;
+               color: #ddd;
+               margin-bottom: 20px;
+          }
+
+          .empty-state h3 {
+               font-size: 1.5rem;
+               margin-bottom: 10px;
+               color: #333;
+          }
+
+          .empty-state p {
+               font-size: 1rem;
+               color: #666;
+          }
+
+          /* Loading Animation */
+          .loading {
+               display: none;
+               text-align: center;
+               padding: 40px;
+               grid-column: 1 / -1;
+          }
+
+          .spinner {
+               width: 40px;
+               height: 40px;
+               border: 4px solid #f3f3f3;
+               border-top: 4px solid #BB0019;
+               border-radius: 50%;
+               animation: spin 1s linear infinite;
+               margin: 0 auto;
+          }
+
+          @keyframes spin {
+               0% { transform: rotate(0deg); }
+               100% { transform: rotate(360deg); }
+          }
+
+          /* Responsive Design */
+          @media (max-width: 768px) {
+               .header h1 {
+                    font-size: 2rem;
+               }
+
+               .header p {
+                    font-size: 1rem;
+               }
+
+               .controls {
+                    flex-direction: column;
+                    gap: 15px;
+               }
+
+               .search-container {
+                    max-width: 100%;
+               }
+
+               .grid-container {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    padding: 10px;
+               }
+
+               .item {
+                    padding: 70px 30px 30px;
+                    margin-top: 50px;
+               }
+
+               .item img {
+                    width: 100px;
+                    height: 100px;
+                    top: -50px;
+               }
+          }
+
+          @media (max-width: 480px) {
+               .header {
+                    padding: 20px 10px;
+               }
+
+               .header h1 {
+                    font-size: 1.5rem;
+               }
+
+               .item {
+                    padding: 60px 20px 20px;
+                    margin-top: 40px;
+               }
+
+               .item img {
+                    width: 80px;
+                    height: 80px;
+                    top: -40px;
+               }
+
+               .item p {
+                    font-size: 14px;
+               }
+          }
      </style>
-
-
 </head>
 <body>
-     <div class="grid-container">
-          <div class="item">
-               <img src="img/profile1.jpg" alt="">
-               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia alias saepe ad dolores eius, accusantium eligendi nihil, minus nostrum in at repudiandae eos molestiae, doloremque similique. Expedita praesentium laborum incidunt.</p>
-               <h3>Lorem ipsum</h3>
-               <h4>Director creativo</h4>
-          </div>
+     <!-- Header -->
+     <div class="header">
+          <h1>Testimonios</h1>
+          <p>Descubre lo que nuestros clientes dicen sobre nuestros servicios. Experiencias reales de personas que confían en nosotros.</p>
+     </div>
 
-          <div class="item">
-               <img src="img/profile2.jpg" alt="">
-               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia alias saepe ad dolores eius, accusantium eligendi nihil, minus nostrum in at repudiandae eos molestiae, doloremque similique. Expedita praesentium laborum incidunt.</p>
-               <h3>Lorem ipsum</h3>
-               <h4>Director creativo</h4>
+     <!-- Controls -->
+     <div class="controls">
+          <div class="search-container">
+               <i class="fas fa-search search-icon"></i>
+               <input type="text" class="search-input" id="searchInput" placeholder="Buscar testimonios...">
           </div>
-
-          <div class="item">
-               <img src="img/profile3.jpg" alt="">
-               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia alias saepe ad dolores eius, accusantium eligendi nihil, minus nostrum in at repudiandae eos molestiae, doloremque similique. Expedita praesentium laborum incidunt.</p>
-               <h3>Lorem ipsum</h3>
-               <h4>Director creativo</h4>
-          </div>
-
-          <div class="item">
-               <img src="img/profile4.jpg" alt="">
-               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia alias saepe ad dolores eius, accusantium eligendi nihil, minus nostrum in at repudiandae eos molestiae, doloremque similique. Expedita praesentium laborum incidunt.</p>
-               <h3>Lorem ipsum</h3>
-               <h4>Director creativo</h4>
-          </div>
-
-          <div class="item">
-               <img src="img/profile5.jpg" alt="">
-               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia alias saepe ad dolores eius, accusantium eligendi nihil, minus nostrum in at repudiandae eos molestiae, doloremque similique. Expedita praesentium laborum incidunt.</p>
-               <h3>Lorem ipsum</h3>
-               <h4>Director creativo</h4>
-          </div>
-
-          <div class="item">
-               <img src="img/profile6.jpg" alt="">
-               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia alias saepe ad dolores eius, accusantium eligendi nihil, minus nostrum in at repudiandae eos molestiae, doloremque similique. Expedita praesentium laborum incidunt.</p>
-               <h3>Lorem ipsum</h3>
-               <h4>Director creativo</h4>
-          </div>
-
-          <div class="item">
-               <img src="img/profile7.jpg" alt="">
-               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia alias saepe ad dolores eius, accusantium eligendi nihil, minus nostrum in at repudiandae eos molestiae, doloremque similique. Expedita praesentium laborum incidunt.</p>
-               <h3>Lorem ipsum</h3>
-               <h4>Director creativo</h4>
-          </div>
-
-          <div class="item">
-               <img src="img/profile8.jpg" alt="">
-               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia alias saepe ad dolores eius, accusantium eligendi nihil, minus nostrum in at repudiandae eos molestiae, doloremque similique. Expedita praesentium laborum incidunt.</p>
-               <h3>Lorem ipsum</h3>
-               <h4>Director creativo</h4>
+          
+          <div class="filter-buttons">
+               <button class="filter-btn active" data-filter="all">Todos</button>
+               <button class="filter-btn" data-filter="5-star">5 Estrellas</button>
+               <button class="filter-btn" data-filter="4-star">4+ Estrellas</button>
+               <button class="filter-btn" data-filter="recent">Recientes</button>
           </div>
      </div>
+
+     <!-- Grid Container -->
+     <div class="grid-container" id="testimonialsGrid">
+          <div class="item" data-rating="5" data-category="recent">
+               <img src="img/profile1.jpg" alt="María González">
+               <div class="rating">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+               </div>
+               <p>"Excelente servicio y atención al cliente. El equipo fue muy profesional y entregó resultados que superaron nuestras expectativas. Definitivamente los recomendaría."</p>
+               <h3>María González</h3>
+               <h4>Directora de Marketing</h4>
+          </div>
+
+          <div class="item" data-rating="5" data-category="recent">
+               <img src="img/profile2.jpg" alt="Carlos Rodríguez">
+               <div class="rating">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+               </div>
+               <p>"Increíble experiencia trabajando con este equipo. Su creatividad y atención al detalle son excepcionales. El proyecto se entregó a tiempo y con calidad superior."</p>
+               <h3>Carlos Rodríguez</h3>
+               <h4>CEO, TechStart</h4>
+          </div>
+
+          <div class="item" data-rating="4" data-category="recent">
+               <img src="img/profile3.jpg" alt="Ana Martínez">
+               <div class="rating">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="far fa-star star"></i>
+               </div>
+               <p>"Muy satisfecha con el trabajo realizado. El equipo fue muy comunicativo durante todo el proceso y el resultado final fue exactamente lo que necesitábamos."</p>
+               <h3>Ana Martínez</h3>
+               <h4>Directora Creativa</h4>
+          </div>
+
+          <div class="item" data-rating="5" data-category="recent">
+               <img src="img/profile4.jpg" alt="Luis Pérez">
+               <div class="rating">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+               </div>
+               <p>"Profesionalismo y calidad en cada detalle. El equipo entendió perfectamente nuestras necesidades y entregó un producto que superó nuestras expectativas."</p>
+               <h3>Luis Pérez</h3>
+               <h4>Gerente de Proyectos</h4>
+          </div>
+
+          <div class="item" data-rating="5" data-category="recent">
+               <img src="img/profile5.jpg" alt="Sofia Herrera">
+               <div class="rating">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+               </div>
+               <p>"La mejor decisión que tomamos fue trabajar con este equipo. Su experiencia y dedicación se reflejan en la calidad del trabajo entregado."</p>
+               <h3>Sofia Herrera</h3>
+               <h4>Fundadora, DesignLab</h4>
+          </div>
+
+          <div class="item" data-rating="4" data-category="recent">
+               <img src="img/profile6.jpg" alt="Roberto Silva">
+               <div class="rating">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="far fa-star star"></i>
+               </div>
+               <p>"Excelente comunicación y trabajo en equipo. El proyecto se desarrolló de manera fluida y el resultado fue muy satisfactorio para nuestra empresa."</p>
+               <h3>Roberto Silva</h3>
+               <h4>Director de Operaciones</h4>
+          </div>
+
+          <div class="item" data-rating="5" data-category="recent">
+               <img src="img/profile7.jpg" alt="Carmen Vega">
+               <div class="rating">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+               </div>
+               <p>"Increíble experiencia de trabajo. El equipo demostró gran profesionalismo y creatividad. El proyecto se entregó a tiempo y con excelente calidad."</p>
+               <h3>Carmen Vega</h3>
+               <h4>Directora de Comunicaciones</h4>
+          </div>
+
+          <div class="item" data-rating="5" data-category="recent">
+               <img src="img/profile8.jpg" alt="Diego Morales">
+               <div class="rating">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+               </div>
+               <p>"El mejor equipo con el que hemos trabajado. Su atención al detalle y compromiso con la excelencia son evidentes en cada proyecto que realizan."</p>
+               <h3>Diego Morales</h3>
+               <h4>CEO, InnovateCorp</h4>
+          </div>
+     </div>
+
+     <script>
+          // Variables globales
+          let testimonials = [];
+          let filteredTestimonials = [];
+          let currentFilter = 'all';
+          let searchTerm = '';
+
+          // Inicialización
+          document.addEventListener('DOMContentLoaded', function() {
+               initializeTestimonials();
+               setupEventListeners();
+               setupAnimations();
+          });
+
+          // Inicializar testimonios
+          function initializeTestimonials() {
+               const items = document.querySelectorAll('.item');
+               testimonials = Array.from(items);
+               filteredTestimonials = [...testimonials];
+               
+               // Aplicar animaciones escalonadas
+               testimonials.forEach((item, index) => {
+                    item.style.animationDelay = `${index * 0.1}s`;
+               });
+          }
+
+          // Configurar event listeners
+          function setupEventListeners() {
+               const searchInput = document.getElementById('searchInput');
+               const filterButtons = document.querySelectorAll('.filter-btn');
+
+               // Búsqueda
+               searchInput.addEventListener('input', handleSearch);
+
+               // Filtros
+               filterButtons.forEach(btn => {
+                    btn.addEventListener('click', handleFilter);
+               });
+          }
+
+          // Configurar animaciones
+          function setupAnimations() {
+               const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                         if (entry.isIntersecting) {
+                              entry.target.classList.add('visible');
+                         }
+                    });
+               }, { threshold: 0.1 });
+
+               document.querySelectorAll('.item').forEach(item => {
+                    observer.observe(item);
+               });
+          }
+
+          // Manejar búsqueda
+          function handleSearch(e) {
+               searchTerm = e.target.value.toLowerCase();
+               filterTestimonials();
+          }
+
+          // Manejar filtros
+          function handleFilter(e) {
+               // Actualizar botones activos
+               document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+               });
+               e.target.classList.add('active');
+
+               currentFilter = e.target.dataset.filter;
+               filterTestimonials();
+          }
+
+          // Filtrar testimonios
+          function filterTestimonials() {
+               const grid = document.getElementById('testimonialsGrid');
+               
+               // Mostrar loading
+               showLoading();
+
+               setTimeout(() => {
+                    filteredTestimonials = testimonials.filter(item => {
+                         const text = item.textContent.toLowerCase();
+                         const rating = parseInt(item.dataset.rating);
+                         const category = item.dataset.category;
+
+                         // Filtro de búsqueda
+                         const matchesSearch = searchTerm === '' || text.includes(searchTerm);
+
+                         // Filtro de categoría
+                         let matchesFilter = true;
+                         switch (currentFilter) {
+                              case '5-star':
+                                   matchesFilter = rating === 5;
+                                   break;
+                              case '4-star':
+                                   matchesFilter = rating >= 4;
+                                   break;
+                              case 'recent':
+                                   matchesFilter = category === 'recent';
+                                   break;
+                              default:
+                                   matchesFilter = true;
+                         }
+
+                         return matchesSearch && matchesFilter;
+                    });
+
+                    renderTestimonials();
+               }, 300);
+          }
+
+          // Renderizar testimonios
+          function renderTestimonials() {
+               const grid = document.getElementById('testimonialsGrid');
+               
+               // Limpiar grid
+               grid.innerHTML = '';
+
+               if (filteredTestimonials.length === 0) {
+                    grid.innerHTML = `
+                         <div class="empty-state">
+                              <i class="fas fa-search"></i>
+                              <h3>No se encontraron testimonios</h3>
+                              <p>Intenta ajustar los filtros o términos de búsqueda</p>
+                         </div>
+                    `;
+                    return;
+               }
+
+               // Agregar testimonios filtrados
+               filteredTestimonials.forEach(item => {
+                    grid.appendChild(item.cloneNode(true));
+               });
+
+               // Reaplicar animaciones
+               setupAnimations();
+          }
+
+          // Mostrar loading
+          function showLoading() {
+               const grid = document.getElementById('testimonialsGrid');
+               grid.innerHTML = `
+                    <div class="loading">
+                         <div class="spinner"></div>
+                         <p>Buscando testimonios...</p>
+                    </div>
+               `;
+          }
+
+          // Función para agregar nuevo testimonio (ejemplo)
+          function addTestimonial(testimonialData) {
+               const grid = document.getElementById('testimonialsGrid');
+               const newItem = document.createElement('div');
+               
+               newItem.className = 'item';
+               newItem.dataset.rating = testimonialData.rating;
+               newItem.dataset.category = testimonialData.category;
+               
+               newItem.innerHTML = `
+                    <img src="${testimonialData.image}" alt="${testimonialData.name}">
+                    <div class="rating">
+                         ${generateStars(testimonialData.rating)}
+                    </div>
+                    <p>"${testimonialData.text}"</p>
+                    <h3>${testimonialData.name}</h3>
+                    <h4>${testimonialData.position}</h4>
+               `;
+
+               grid.appendChild(newItem);
+               testimonials.push(newItem);
+          }
+
+          // Generar estrellas
+          function generateStars(rating) {
+               let stars = '';
+               for (let i = 1; i <= 5; i++) {
+                    if (i <= rating) {
+                         stars += '<i class="fas fa-star star"></i>';
+                    } else {
+                         stars += '<i class="far fa-star star"></i>';
+                    }
+               }
+               return stars;
+          }
+
+          // Exportar funciones para uso global
+          window.addTestimonial = addTestimonial;
+     </script>
 </body>
 </html>
