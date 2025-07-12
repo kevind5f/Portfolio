@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Heladeria</title>
+     <meta name="description" content="Heladería artesanal con los mejores sabores naturales y opciones libres de lactosa. Disfruta de helados frescos y postres deliciosos.">
+     <meta name="keywords" content="helados, heladería, artesanal, postres, lactosa, OmegaLull">
+     <title>Heladería Artesanal - OmegaLull</title>
      <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
      <link rel="stylesheet" href="../fonts/fontawesome/css/all.min.css">
      <link rel="stylesheet" href="estilos.css">
@@ -15,29 +17,29 @@
      <nav>
           <div class="grid container-center">
                <div class="enlaces">
-                    <a href="">Inicio</a>
-                    <a href="">Sabores</a>
-                    <a href="">Eventos</a>
-                    <a href="">Nosotros</a>
+                    <a href="#inicio" aria-label="Ir a inicio">Inicio</a>
+                    <a href="#sabores" aria-label="Ver nuestros sabores">Sabores</a>
+                    <a href="#eventos" aria-label="Información sobre eventos">Eventos</a>
+                    <a href="#nosotros" aria-label="Conoce más sobre nosotros">Nosotros</a>
                </div>
      
                <div class="sociales">
-                    <a href="" class="fab fa-facebook-f"></a>
-                    <a href="" class="fab fa-twitter"></a>
-                    <a href="" class="fab fa-instagram"></a>
+                    <a href="#" aria-label="Síguenos en Facebook" class="fab fa-facebook-f"></a>
+                    <a href="#" aria-label="Síguenos en Twitter" class="fab fa-twitter"></a>
+                    <a href="#" aria-label="Síguenos en Instagram" class="fab fa-instagram"></a>
                </div>
           </div>
      </nav>
 
 
       <!-- Header -->
-     <header>    
+     <header id="inicio">    
           <div class="grid container-center">
                <div class="text-content full">
                     <h3>#Helados</h3>
                     <h2>Artesanal</h2>
                     <h1>Helado</h1>
-                    <button class="btn light">Menú</button> 
+                    <button class="btn light" aria-label="Ver nuestro menú completo">Menú</button> 
                </div>
           </div>
      </header>
@@ -45,7 +47,7 @@
 
 
      <!-- Section sabores -->
-     <section class="sabores">
+     <section class="sabores" id="sabores">
           <div class="grid">
                <div class="span6 background">
                </div>
@@ -54,8 +56,8 @@
                     <div class="text-content lateral">
                          <h1>NUESTROS SABORES</h1>
                          <h3>¡Frescos y sabrosos!</h3>
-                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis enim, deserunt id eum, dignissimos illo assumenda, voluptatum similique repellat praesentium tenetur non sint expedita itaque voluptatem aperiam a ut fugiat!</p>
-                         <button class="btn dark">Menú</button>
+                         <p>Descubre nuestra amplia variedad de helados artesanales elaborados con ingredientes naturales de la más alta calidad. Desde clásicos como vainilla y chocolate hasta sabores únicos como lavanda y matcha. Cada helado es preparado diariamente para garantizar frescura y sabor excepcional.</p>
+                         <button class="btn dark" aria-label="Explorar todos nuestros sabores">Menú</button>
                     </div>
                </div>
           </div>
@@ -68,20 +70,21 @@
           <div class="text-content full">
                <h2>DISFRUTA</h2>
                <h1>LIBRE DE LACTOSA</h1>
-               <button class="btn light">Menú</button>
+               <p>Opciones deliciosas para todos</p>
+               <button class="btn light" aria-label="Ver opciones libres de lactosa">Menú</button>
           </div>
      </section>
 
 
      <!-- Section Lugar -->
-     <section class="lugar">
+     <section class="lugar" id="nosotros">
           <div class="grid">
                <div class="span6">
                     <div class="text-content lateral">
                          <h1>Nuestro lugar</h1>
                          <h3>¡Helado frente al mar!</h3>
-                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis enim, deserunt id eum, dignissimos illo assumenda, voluptatum similique repellat praesentium tenetur non sint expedita itaque voluptatem aperiam a ut fugiat!</p>
-                         <button class="btn dark">Leer más</button>
+                         <p>Ubicados en el corazón de la costa, nuestra heladería ofrece una experiencia única donde puedes disfrutar de los mejores helados artesanales mientras contemplas las hermosas vistas del océano. Un ambiente relajante y familiar perfecto para compartir momentos especiales.</p>
+                         <button class="btn dark" aria-label="Conocer más sobre nuestra ubicación">Leer más</button>
                     </div>
                </div>
 
@@ -92,11 +95,12 @@
 
 
      <!-- Section Eventos-->
-     <section class="eventos full">
+     <section class="eventos full" id="eventos">
           <div class="text-content full">
                <h2>CATERING & MÁS</h2>
                <h1>eventOs</h1>
-               <button class="btn light">Pide un deseo</button>
+               <p>Hacemos tus eventos especiales</p>
+               <button class="btn light" aria-label="Solicitar información para eventos">Pide un deseo</button>
           </div>
      </section>
 
@@ -111,8 +115,8 @@
                     <div class="text-content lateral">
                          <h1>POSTRES</h1>
                          <h3>¡Helados y más!</h3>
-                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis enim, deserunt id eum, dignissimos illo assumenda, voluptatum similique repellat praesentium tenetur non sint expedita itaque voluptatem aperiam a ut fugiat!</p>
-                         <button class="btn dark">Menú</button>
+                         <p>Explora nuestra selección de postres gourmet que van más allá del helado tradicional. Desde sundaes elaborados hasta tortas heladas artesanales, cada creación es una obra maestra de sabor y presentación que deleitará tus sentidos.</p>
+                         <button class="btn dark" aria-label="Ver nuestra carta de postres">Menú</button>
                     </div>
                </div>
           </div>
@@ -122,7 +126,7 @@
 
      <!-- Section Imagen Helado -->
      <section class="helado">
-          <img src="img/image8.webp" alt="">
+          <img src="img/image8.webp" alt="Helado artesanal decorado con frutas y toppings">
      </section>
 
 
@@ -131,48 +135,56 @@
           <div class="grid container-center">
 
                <div class="items">
-                    <h2>Direccion</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi dolore saepe fugit quod maxime corrupti eligendi explicabo facere facilis hic, laborum expedita a. Vitae, eveniet esse maiores tempore officiis et.</p>
+                    <h2>Dirección</h2>
+                    <p>Av. Costera 123, Zona Turística<br>
+                    Costa del Sol, CP 12345<br>
+                    Frente al malecón, con vista al mar</p>
                </div>
 
                <div class="items">
                     <h2>Enlaces</h2>
                     <ul>
-                         <li><a href="">Helados</a></li>
-                         <li><a href="">Tortas</a></li>
-                         <li><a href="">Dulces</a></li>
-                         <li><a href="">Postres</a></li>
-                         <li><a href="">Sobre nosotros</a></li>
-                         <li><a href="">Contactanos</a></li>
-                         <li><a href="">Nuestro menú</a></li>
-                         <li><a href="">Delivery y envíos</a></li>
-                         <li><a href="">Empleos</a></li>
+                         <li><a href="#sabores" aria-label="Ver nuestros helados">Helados</a></li>
+                         <li><a href="#postres" aria-label="Explorar nuestras tortas">Tortas</a></li>
+                         <li><a href="#" aria-label="Ver dulces artesanales">Dulces</a></li>
+                         <li><a href="#" aria-label="Nuestra selección de postres">Postres</a></li>
+                         <li><a href="#nosotros" aria-label="Conoce más sobre nosotros">Sobre nosotros</a></li>
+                         <li><a href="#" aria-label="Información de contacto">Contáctanos</a></li>
+                         <li><a href="#" aria-label="Ver nuestro menú completo">Nuestro menú</a></li>
+                         <li><a href="#" aria-label="Servicios de delivery">Delivery y envíos</a></li>
+                         <li><a href="#" aria-label="Oportunidades laborales">Empleos</a></li>
                     </ul>
                </div>
 
                <div class="items">
                     <h2>Horario</h2>
-                    <p>Todos los dias <br>10AM - 8PM</p>
+                    <p>Todos los días<br>
+                    <strong>10:00 AM - 8:00 PM</strong><br>
+                    Abierto todo el año</p>
                </div>
 
                <div class="items">
                     <div>
                          <h2>Contacto</h2>
-                         <p>info@misitio.com <br>Tel: 914-123-456</p>
+                         <p><a href="mailto:info@heladeriaartesanal.com">info@heladeriaartesanal.com</a><br>
+                         <a href="tel:+52-914-123-4567">Tel: 914-123-4567</a></p>
                     </div>
                     
                     <div class="sociales">
-                         <a href="" class="fab fa-facebook-f"></a>
-                         <a href="" class="fab fa-twitter"></a>
-                         <a href="" class="fab fa-instagram"></a>
+                         <a href="#" aria-label="Síguenos en Facebook" class="fab fa-facebook-f"></a>
+                         <a href="#" aria-label="Síguenos en Twitter" class="fab fa-twitter"></a>
+                         <a href="#" aria-label="Síguenos en Instagram" class="fab fa-instagram"></a>
                     </div>
                </div>
 
 
                <div class="items subs">
-                    <h2>Subscribete</h2>
-                    <input type="text" placeholder="Ingrese su email">
-                    <button class="btn dark">Enviar</button>
+                    <h2>Suscríbete</h2>
+                    <p>Recibe ofertas especiales y novedades</p>
+                    <form class="newsletter-form">
+                         <input type="email" placeholder="Ingresa tu email" required aria-label="Tu dirección de email">
+                         <button type="submit" class="btn dark" aria-label="Suscribirse al newsletter">Enviar</button>
+                    </form>
                </div>
 
           </div>
@@ -181,7 +193,52 @@
 
      <!-- Footer copy -->
      <div class="copy">
-          <p>®OmegaLull</p>
+          <p>&copy; 2024 OmegaLull - Heladería Artesanal. Todos los derechos reservados.</p>
      </div>
+
+     <script>
+          // Smooth scrolling for navigation links
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+               anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                         target.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'start'
+                         });
+                    }
+               });
+          });
+
+          // Newsletter form handling
+          const newsletterForm = document.querySelector('.newsletter-form');
+          if (newsletterForm) {
+               newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    if (email) {
+                         // Simulate form submission
+                         alert('¡Gracias por suscribirte! Te enviaremos nuestras mejores ofertas.');
+                         this.reset();
+                    }
+               });
+          }
+
+          // Add scroll effect to navigation
+          window.addEventListener('scroll', function() {
+               const nav = document.querySelector('nav');
+               if (window.scrollY > 100) {
+                    nav.style.background = 'rgba(249, 219, 121, 0.95)';
+               } else {
+                    nav.style.background = 'rgba(249, 219, 121, 0.745)';
+               }
+          });
+
+          // Add loading animation
+          window.addEventListener('load', function() {
+               document.body.classList.add('loaded');
+          });
+     </script>
 </body>
 </html>
