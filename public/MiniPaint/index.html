@@ -3,235 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicación de Dibujo</title>
+    <meta name="description" content="Aplicación de dibujo digital con herramientas avanzadas, formas geométricas, texto y efectos especiales">
+    <meta name="keywords" content="dibujo, pintura digital, canvas, herramientas de dibujo, OmegaLull">
+    <title>MiniPaint - Aplicación de Dibujo Digital</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-    <section id="main">
-      <section id="paleta">
-        <div class="tabs">
-          <div class="tab active" data-tab="herramientas">Herramientas</div>
-          <div class="tab" data-tab="formas">Formas</div>
-          <div class="tab" data-tab="texto">Texto</div>
-          <div class="tab" data-tab="imagenes">Imágenes</div>
-          <div class="tab" data-tab="trazos">Trazos</div>
-          <div id="undo-redo-container">
-            <button class="btn btn-secondary" id="btn-undo" title="Deshacer"><i class="fas fa-undo"></i></button>
-            <button class="btn btn-secondary" id="btn-redo" title="Rehacer"><i class="fas fa-redo"></i></button>
-          </div>
-        </div>
-        
-        <div class="tab-content active" id="tab-herramientas">
-          <div class="tool-grid">
-            <div class="tool-btn active" data-tool="pincel">
-              <i class="fas fa-paint-brush"></i>
-              <span>Pincel</span>
+    <div class="app-container">
+        <header class="app-header">
+            <h1><i class="fas fa-palette"></i> MiniPaint</h1>
+            <p>Aplicación de dibujo digital profesional</p>
+        </header>
+
+        <main id="main">
+            <section id="paleta" class="toolbar">
+                <div class="tabs">
+                    <div class="tab active" data-tab="herramientas" aria-label="Herramientas de dibujo">
+                        <i class="fas fa-tools"></i> Herramientas
+                    </div>
+                    <div class="tab" data-tab="formas" aria-label="Formas geométricas">
+                        <i class="fas fa-shapes"></i> Formas
+                    </div>
+                    <div id="undo-redo-container">
+                        <button class="btn btn-secondary" id="btn-undo" title="Deshacer (Ctrl+Z)" aria-label="Deshacer última acción">
+                            <i class="fas fa-undo"></i>
+                        </button>
+                        <button class="btn btn-secondary" id="btn-redo" title="Rehacer (Ctrl+Y)" aria-label="Rehacer última acción">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="tab-content active" id="tab-herramientas">
+                    <div class="tool-grid">
+                        <div class="tool-btn active" data-tool="pincel" title="Pincel libre">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Pincel</span>
+                        </div>
+                        <div class="tool-btn" data-tool="borrador" title="Borrador">
+                            <i class="fas fa-eraser"></i>
+                            <span>Borrador</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="control-group">
+                            <label for="colorPicker"><b>Color:</b></label>
+                            <input id="colorPicker" type="color" value="#000000" aria-label="Seleccionar color de dibujo">
+                        </div>
+                        <div class="color-presets" aria-label="Colores predefinidos">
+                            <div class="color-preset" style="background-color: #000000;" data-color="#000000" title="Negro"></div>
+                            <div class="color-preset" style="background-color: #FF0000;" data-color="#FF0000" title="Rojo"></div>
+                            <div class="color-preset" style="background-color: #00FF00;" data-color="#00FF00" title="Verde"></div>
+                            <div class="color-preset" style="background-color: #0000FF;" data-color="#0000FF" title="Azul"></div>
+                            <div class="color-preset" style="background-color: #FFFF00;" data-color="#FFFF00" title="Amarillo"></div>
+                            <div class="color-preset" style="background-color: #FF00FF;" data-color="#FF00FF" title="Magenta"></div>
+                            <div class="color-preset" style="background-color: #00FFFF;" data-color="#00FFFF" title="Cian"></div>
+                            <div class="color-preset" style="background-color: #FFFFFF;" data-color="#FFFFFF" title="Blanco"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="control-group">
+                            <label for="lineWidth"><b>Grosor:</b></label>
+                            <input id="lineWidth" type="range" min="1" max="50" value="5" aria-label="Ajustar grosor de línea">
+                            <span id="lineWidthValue">5px</span>
+                        </div>
+                        <div class="control-group">
+                            <label for="opacity"><b>Opacidad:</b></label>
+                            <input id="opacity" type="range" min="0" max="100" value="100" aria-label="Ajustar opacidad">
+                            <span id="opacityValue">100%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="tab-formas">
+                    <div class="tool-grid">
+                        <div class="tool-btn" data-tool="rectangulo" title="Dibujar rectángulo">
+                            <i class="far fa-square"></i>
+                            <span>Rectángulo</span>
+                        </div>
+                        <div class="tool-btn" data-tool="circulo" title="Dibujar círculo">
+                            <i class="far fa-circle"></i>
+                            <span>Círculo</span>
+                        </div>
+                        <div class="tool-btn" data-tool="triangulo" title="Dibujar triángulo">
+                            <i class="fas fa-play" style="transform: rotate(90deg)"></i>
+                            <span>Triángulo</span>
+                        </div>
+                        <div class="tool-btn" data-tool="estrella" title="Dibujar estrella">
+                            <i class="far fa-star"></i>
+                            <span>Estrella</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="control-group">
+                            <label for="fillColor"><b>Relleno:</b></label>
+                            <input id="fillColor" type="color" value="#ffffff" aria-label="Color de relleno">
+                        </div>
+                        <div class="control-group">
+                            <label for="bordeEstilo"><b>Borde:</b></label>
+                            <select id="bordeEstilo" aria-label="Estilo de borde">
+                                <option value="solid">Sólido</option>
+                                <option value="dashed">Discontinuo</option>
+                                <option value="none">Sin borde</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <input type="checkbox" id="fillShape" checked aria-label="Rellenar formas automáticamente">
+                            <label for="fillShape">Rellenar forma</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div id="canvas-container" class="canvas-wrapper">
+                <canvas id="canvas" width="800" height="500" aria-label="Área de dibujo"></canvas>
+                <div class="canvas-overlay" id="canvas-overlay">
+                    <div class="zoom-controls">
+                        <button class="zoom-btn" id="zoom-in" title="Zoom +" aria-label="Aumentar zoom">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                        <button class="zoom-btn" id="zoom-out" title="Zoom -" aria-label="Reducir zoom">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <button class="zoom-btn" id="zoom-reset" title="Zoom 100%" aria-label="Restablecer zoom">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="tool-btn" data-tool="borrador">
-              <i class="fas fa-eraser"></i>
-              <span>Borrador</span>
+            
+            <div class="action-buttons">
+                <button class="btn btn-danger" id="btn-clear" aria-label="Limpiar todo el canvas">
+                    <i class="fas fa-trash-alt"></i> Limpiar
+                </button>
+                <button class="btn btn-success" id="btn-save" aria-label="Guardar imagen">
+                    <i class="fas fa-download"></i> Guardar
+                </button>
             </div>
-            <div class="tool-btn" data-tool="linea">
-              <i class="fas fa-slash"></i>
-              <span>Línea</span>
+            
+            <div class="status-bar">
+                <span id="coordinates" aria-label="Coordenadas del cursor">X: 0, Y: 0</span>
+                <span id="current-tool" aria-label="Herramienta actual">Herramienta: Pincel</span>
+                <span id="canvas-size" aria-label="Tamaño del canvas">800 x 500</span>
             </div>
-            <div class="tool-btn" data-tool="flecha">
-              <i class="fas fa-long-arrow-alt-right"></i>
-              <span>Flecha</span>
+        </main>
+
+        <div class="shortcuts-help" id="shortcuts-help">
+            <h3><i class="fas fa-keyboard"></i> Atajos de Teclado</h3>
+            <div class="shortcuts-grid">
+                <div class="shortcut-item">
+                    <kbd>Ctrl + Z</kbd>
+                    <span>Deshacer</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Ctrl + Y</kbd>
+                    <span>Rehacer</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Ctrl + S</kbd>
+                    <span>Guardar</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Delete</kbd>
+                    <span>Limpiar</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>+</kbd>
+                    <span>Zoom +</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>-</kbd>
+                    <span>Zoom -</span>
+                </div>
             </div>
-            <div class="tool-btn" data-tool="seleccion">
-              <i class="fas fa-mouse-pointer"></i>
-              <span>Selección</span>
-            </div>
-            <div class="tool-btn" data-tool="colorpicker">
-              <i class="fas fa-eye-dropper"></i>
-              <span>Selector Color</span>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="control-group">
-              <b>Color:</b>
-              <input id="colorPicker" type="color" value="#000000">
-            </div>
-            <div class="color-presets">
-              <div class="color-preset" style="background-color: #000000;" data-color="#000000"></div>
-              <div class="color-preset" style="background-color: #FF0000;" data-color="#FF0000"></div>
-              <div class="color-preset" style="background-color: #00FF00;" data-color="#00FF00"></div>
-              <div class="color-preset" style="background-color: #0000FF;" data-color="#0000FF"></div>
-              <div class="color-preset" style="background-color: #FFFF00;" data-color="#FFFF00"></div>
-              <div class="color-preset" style="background-color: #FF00FF;" data-color="#FF00FF"></div>
-              <div class="color-preset" style="background-color: #00FFFF;" data-color="#00FFFF"></div>
-              <div class="color-preset" style="background-color: #FFFFFF;" data-color="#FFFFFF"></div>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="control-group">
-              <b>Grosor:</b>
-              <input id="lineWidth" type="number" min="1" max="50" value="5">
-            </div>
-            <div class="control-group">
-              <b>Opacidad:</b>
-              <input id="opacity" type="range" min="0" max="100" value="100">
-              <span id="opacityValue">100%</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="tab-content" id="tab-formas">
-          <div class="tool-grid">
-            <div class="tool-btn" data-tool="rectangulo">
-              <i class="far fa-square"></i>
-              <span>Rectángulo</span>
-            </div>
-            <div class="tool-btn" data-tool="circulo">
-              <i class="far fa-circle"></i>
-              <span>Círculo</span>
-            </div>
-            <div class="tool-btn" data-tool="triangulo">
-              <i class="fas fa-play" style="transform: rotate(90deg)"></i>
-              <span>Triángulo</span>
-            </div>
-            <div class="tool-btn" data-tool="poligono">
-              <i class="fas fa-draw-polygon"></i>
-              <span>Polígono</span>
-            </div>
-            <div class="tool-btn" data-tool="estrella">
-              <i class="far fa-star"></i>
-              <span>Estrella</span>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="control-group">
-              <b>Relleno:</b>
-              <input id="fillColor" type="color" value="#ffffff">
-            </div>
-            <div class="control-group">
-              <b>Borde:</b>
-              <select id="bordeEstilo">
-                <option value="solid">Sólido</option>
-                <option value="dashed">Discontinuo</option>
-                <option value="none">Sin borde</option>
-              </select>
-            </div>
-            <div class="control-group">
-              <input type="checkbox" id="fillShape" checked>
-              <label for="fillShape">Rellenar forma</label>
-            </div>
-          </div>
-        </div>
-        
-        <div class="tab-content" id="tab-texto">
-          <div class="form-row">
-            <div class="control-group">
-              <b>Fuente:</b>
-              <select id="fontFamily">
-                <option value="Arial">Arial</option>
-                <option value="Verdana">Verdana</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Courier New">Courier New</option>
-                <option value="Impact">Impact</option>
-              </select>
-            </div>
-            <div class="control-group">
-              <b>Tamaño:</b>
-              <input id="fontSize" type="number" min="8" max="72" value="20">
-            </div>
-            <div class="control-group">
-              <b>Estilo:</b>
-              <select id="fontStyle">
-                <option value="normal">Normal</option>
-                <option value="italic">Cursiva</option>
-                <option value="bold">Negrita</option>
-                <option value="bold italic">Negrita Cursiva</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="control-group" style="flex-grow: 1;">
-              <b>Texto:</b>
-              <input type="text" id="text-input" placeholder="Escribe tu texto aquí...">
-            </div>
-            <button class="btn btn-primary" id="add-text">Añadir Texto</button>
-          </div>
-        </div>
-        
-        <div class="tab-content" id="tab-imagenes">
-          <div class="form-row">
-            <input type="file" id="fileInput" accept="image/*">
-            <button class="btn btn-primary" id="btn-upload">
-              <i class="fas fa-upload"></i> Subir Imagen
+            <button class="btn btn-secondary" id="close-help" aria-label="Cerrar ayuda">
+                <i class="fas fa-times"></i> Cerrar
             </button>
-            <button class="btn btn-warning" id="btn-background">
-              <i class="fas fa-image"></i> Usar como Fondo
-            </button>
-          </div>
-          <div class="form-row">
-            <div class="control-group">
-              <b>Tamaño:</b>
-              <input id="imageWidth" type="number" min="10" max="800" value="200" placeholder="Ancho">
-              <span>x</span>
-              <input id="imageHeight" type="number" min="10" max="500" value="150" placeholder="Alto">
-            </div>
-            <div class="control-group">
-              <input type="checkbox" id="maintainRatio" checked>
-              <label for="maintainRatio">Mantener proporción</label>
-            </div>
-          </div>
         </div>
-        
-        <div class="tab-content" id="tab-trazos">
-          <div class="form-row">
-            <div class="control-group">
-              <b>Tipo de trazo:</b>
-              <div class="stroke-pattern solid" data-pattern="solid"></div>
-              <div class="stroke-pattern dashed" data-pattern="dashed"></div>
-              <div class="stroke-pattern dotted" data-pattern="dotted"></div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="control-group">
-              <b>Efecto de pincel:</b>
-              <select id="brushEffect">
-                <option value="normal">Normal</option>
-                <option value="neon">Neón</option>
-                <option value="shadow">Sombra</option>
-                <option value="rough">Rugoso</option>
-                <option value="marker">Marcador</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <div id="canvas-container">
-        <canvas id="canvas" width="800" height="500"></canvas>
-      </div>
-      
-      <div class="form-row" style="margin-top: 20px;">
-        <button class="btn btn-danger" id="btn-clear">
-          <i class="fas fa-trash-alt"></i> Limpiar
+
+        <button class="help-toggle" id="help-toggle" aria-label="Mostrar/ocultar ayuda">
+            <i class="fas fa-question-circle"></i>
         </button>
-        <button class="btn btn-success" id="btn-save">
-          <i class="fas fa-download"></i> Guardar
-        </button>
-        <button class="btn btn-dark" id="btn-save-json">
-          <i class="fas fa-save"></i> Guardar Proyecto
-        </button>
-        <button class="btn btn-primary" id="btn-load-json">
-          <i class="fas fa-folder-open"></i> Cargar Proyecto
-        </button>
-        <input type="file" id="loadJsonInput" accept=".json" style="display: none;">
-      </div>
-      
-      <div class="status-bar">
-        <span id="coordinates">X: 0, Y: 0</span>
-        <span id="current-tool">Herramienta: Pincel</span>
-      </div>
-    </section>
-  <script src="index.js"></script>
+    </div>
+
+    <script src="index.js"></script>
 </body>
 </html>
