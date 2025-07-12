@@ -4,42 +4,40 @@
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Blog Videojuegos</title>
+     <title>Blog Videojuegos - OmegaLull</title>
+     <meta name="description" content="Blog de videojuegos con las últimas noticias, reviews y contenido gaming">
      <link rel="stylesheet" href="estilos.css">
      <link rel="stylesheet" href="../fonts/fontawesome/css/all.min.css">
      <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-     <!-- Boton de ir arriba -->
-     <a href="#home" class="btn-top"><span class="fas fa-angle-up"></span></a>
-
-
-
-
-      <!-- Menu sociales -->
+     <!-- Menu sociales -->
      <div id="home" class="nav-sociales">
-          <a href=""class="fab fa-facebook-f"></a>
-          <a href=""class="fab fa-twitter"></a>
-          <a href=""class="fab fa-instagram"></a>
-          <a href=""class="fab fa-youtube"></a>
-          <a href=""class="fab fa-twitch"></a>
-          <a href=""class="fab fa-discord"></a>
+          <a href="#" class="fab fa-facebook-f" aria-label="Facebook" title="Síguenos en Facebook"></a>
+          <a href="#" class="fab fa-twitter" aria-label="Twitter" title="Síguenos en Twitter"></a>
+          <a href="#" class="fab fa-instagram" aria-label="Instagram" title="Síguenos en Instagram"></a>
+          <a href="#" class="fab fa-youtube" aria-label="YouTube" title="Síguenos en YouTube"></a>
+          <a href="#" class="fab fa-twitch" aria-label="Twitch" title="Síguenos en Twitch"></a>
+          <a href="#" class="fab fa-discord" aria-label="Discord" title="Únete a nuestro Discord"></a>
      </div>
 
      <!-- Menu principal -->
-     <nav class="nav-principal">
-          <img src="img/logo.png" alt="">
+     <nav class="nav-principal" role="navigation">
+          <img src="img/logo.png" alt="Blog Videojuegos Logo" class="logo">
           <div class="input-search">
-               <input type="text" name="" id="" placeholder="¿Qué deseas buscar?">
-               <i class="fas fa-search"></i>
+               <input type="text" id="searchInput" placeholder="¿Qué deseas buscar?" aria-label="Buscar contenido">
+               <i class="fas fa-search" aria-hidden="true"></i>
           </div>
           <div class="enlaces">
-               <a href="#destacados">Destacados</a>
-               <a href="#articulos">Articulos</a>
-               <a href="#gallery">Multimedia</a>
+               <a href="#destacados" class="nav-link">Destacados</a>
+               <a href="#articulos" class="nav-link">Artículos</a>
+               <a href="#gallery" class="nav-link">Multimedia</a>
           </div>
+          <button class="mobile-menu-btn" aria-label="Menú móvil" id="mobileMenuBtn">
+               <i class="fas fa-bars"></i>
+          </button>
      </nav>
-
 
      <!-- Header -->
      <header>
@@ -49,10 +47,8 @@
                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil in et quae eveniet optio officiis explicabo maiores, cum ipsa voluptatem, sed vitae porro! Ea nemo expedita sapiente cumque veritatis perspiciatis.</p>
                <button class="btn">Leer más</button>
           </div>
-
           <div class="imagen-header"></div>
      </header>
-
 
      <!-- Destacados -->
      <section id="destacados" class="destacados">
@@ -94,183 +90,610 @@
           </div>
      </section>
 
-
-
-     <!-- Titulo de arcticulos -->
+     <!-- Titulo de artículos -->
      <div id="articulos" class="title">
-          <h1>Blog</h1>
+          <h2>Blog Gaming</h2>
           <div class="badget-container">
-               <span class="badge">Tendencias</span>
-               <span class="badge">Videojuegos</span>
-               <span class="badge">Consolas</span>
-               <span class="badge">Noticias</span>
+               <span class="badge filter-badge active" data-filter="all">Todos</span>
+               <span class="badge filter-badge" data-filter="tendencias">Tendencias</span>
+               <span class="badge filter-badge" data-filter="videojuegos">Videojuegos</span>
+               <span class="badge filter-badge" data-filter="consolas">Consolas</span>
+               <span class="badge filter-badge" data-filter="noticias">Noticias</span>
           </div>      
      </div>
 
-      <!-- Articulos -->
+     <!-- Artículos -->
      <section class="articulos">
-
           <div class="container-articulos">
                
-               <div id="godofwar" class="card">
+               <article id="exitoventas" class="card" data-category="noticias">
                     <div class="imgBox">
-                         <img src="img/card1.jpg" alt="">
+                         <img src="img/game1.png" alt="Éxito en ventas">
+                         <div class="card-overlay">
+                              <span class="card-date">12 Nov 2023</span>
+                              <span class="card-category">Noticias</span>
+                         </div>
                     </div>
                     <div class="content">
-                         <h3>Imagenes God of war Ragnarok</h3>
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, ipsa laboriosam fugit in dolorem iste, quo dignissimos, odit nemo rem at ea id ipsam sed obcaecati architecto animi ullam nam?</p>
-                         <a href="#" class="btn">Leer más</a>
+                         <h3>Éxito récord en ventas de videojuegos</h3>
+                         <p>El mercado de videojuegos alcanza nuevos récords históricos con ventas que superan las expectativas, impulsado por la alta demanda de consolas y títulos AAA.</p>
+                         <a href="#" class="btn" onclick="showArticle('exitoventas')">
+                              <i class="fas fa-play"></i> Leer más
+                         </a>
                     </div>
-               </div>
+               </article>
 
-               <div id="exitoventas" class="card">
+               <article id="gratismes" class="card" data-category="tendencias">
                     <div class="imgBox">
-                         <img src="img/game1.png" alt="">
+                         <img src="img/card2.jpg" alt="Juego gratuito del mes">
+                         <div class="card-overlay">
+                              <span class="card-date">10 Nov 2023</span>
+                              <span class="card-category">Tendencias</span>
+                         </div>
                     </div>
                     <div class="content">
-                         <h3>Exito en ventas</h3>
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, ipsa laboriosam fugit in dolorem iste, quo dignissimos, odit nemo rem at ea id ipsam sed obcaecati architecto animi ullam nam?</p>
-                         <a href="#" class="btn">Leer más</a>
+                         <h3>Juego gratuito del mes: Horizon Zero Dawn</h3>
+                         <p>Sony anuncia que Horizon Zero Dawn será gratuito este mes en PlayStation Plus, permitiendo a millones de jugadores disfrutar de esta obra maestra.</p>
+                         <a href="#" class="btn" onclick="showArticle('gratismes')">
+                              <i class="fas fa-play"></i> Leer más
+                         </a>
                     </div>
-               </div>
+               </article>
 
-               <div id="gratismes" class="card">
+               <article id="acvalhalla" class="card" data-category="videojuegos">
                     <div class="imgBox">
-                         <img src="img/card2.jpg" alt="">
+                         <img src="img/card3.jpeg" alt="Assassin's Creed Valhalla DLC">
+                         <div class="card-overlay">
+                              <span class="card-date">8 Nov 2023</span>
+                              <span class="card-category">Videojuegos</span>
+                         </div>
                     </div>
                     <div class="content">
-                         <h3>Juego gratuito del mes</h3>
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, ipsa laboriosam fugit in dolorem iste, quo dignissimos, odit nemo rem at ea id ipsam sed obcaecati architecto animi ullam nam?</p>
-                         <a href="#" class="btn">Leer más</a>
+                         <h3>Nuevo DLC para Assassin's Creed Valhalla</h3>
+                         <p>Ubisoft revela el nuevo contenido descargable "Dawn of Ragnarök" que expandirá la historia de Eivor con elementos de la mitología nórdica.</p>
+                         <a href="#" class="btn" onclick="showArticle('acvalhalla')">
+                              <i class="fas fa-play"></i> Leer más
+                         </a>
                     </div>
-               </div>
+               </article>
 
-               <div id="acvalhalla" class="card">
+               <article id="fifa21" class="card" data-category="noticias">
                     <div class="imgBox">
-                         <img src="img/card3.jpeg" alt="">
+                         <img src="img/card4.jpg" alt="FIFA 21 Update">
+                         <div class="card-overlay">
+                              <span class="card-date">5 Nov 2023</span>
+                              <span class="card-category">Noticias</span>
+                         </div>
                     </div>
                     <div class="content">
-                         <h3>Nuevo contenido descargable</h3>
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, ipsa laboriosam fugit in dolorem iste, quo dignissimos, odit nemo rem at ea id ipsam sed obcaecati architecto animi ullam nam?</p>
-                         <a href="#" class="btn">Leer más</a>
+                         <h3>Próxima actualización FIFA 21: Nuevas ligas</h3>
+                         <p>EA Sports anuncia la próxima actualización que incluirá nuevas ligas, estadios y mejoras en la inteligencia artificial del juego.</p>
+                         <a href="#" class="btn" onclick="showArticle('fifa21')">
+                              <i class="fas fa-play"></i> Leer más
+                         </a>
                     </div>
-               </div>
+               </article>
 
-               <div id="fifa21" class="card">
+               <article id="recordventas" class="card" data-category="consolas">
                     <div class="imgBox">
-                         <img src="img/card4.jpg" alt="">
+                         <img src="img/card5.jpg" alt="Récord en ventas">
+                         <div class="card-overlay">
+                              <span class="card-date">3 Nov 2023</span>
+                              <span class="card-category">Consolas</span>
+                         </div>
                     </div>
                     <div class="content">
-                         <h3>Próxima actualización FIFA21</h3>
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, ipsa laboriosam fugit in dolorem iste, quo dignissimos, odit nemo rem at ea id ipsam sed obcaecati architecto animi ullam nam?</p>
-                         <a href="#" class="btn">Leer más</a>
+                         <h3>PlayStation 5: Récord en ventas</h3>
+                         <p>La PlayStation 5 alcanza un nuevo récord de ventas, superando las expectativas de Sony y consolidándose como la consola más vendida del año.</p>
+                         <a href="#" class="btn" onclick="showArticle('recordventas')">
+                              <i class="fas fa-play"></i> Leer más
+                         </a>
                     </div>
-               </div>
+               </article>
 
-               <div id="recordventas" class="card">
+               <article id="godofwar" class="card" data-category="videojuegos">
                     <div class="imgBox">
-                         <img src="img/card5.jpg" alt="">
+                         <img src="img/card1.jpg" alt="God of War Ragnarök">
+                         <div class="card-overlay">
+                              <span class="card-date">15 Nov 2023</span>
+                              <span class="card-category">Videojuegos</span>
+                         </div>
                     </div>
                     <div class="content">
-                         <h3>Record en ventas</h3>
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, ipsa laboriosam fugit in dolorem iste, quo dignissimos, odit nemo rem at ea id ipsam sed obcaecati architecto animi ullam nam?</p>
-                         <a href="#" class="btn">Leer más</a>
+                         <h3>God of War Ragnarök: Imágenes exclusivas</h3>
+                         <p>Explora las nuevas imágenes del esperado God of War Ragnarök, donde Kratos y Atreus enfrentarán el Ragnarök en una aventura épica que promete ser la más ambiciosa de la saga.</p>
+                         <a href="#" class="btn" onclick="showArticle('godofwar')">
+                              <i class="fas fa-play"></i> Leer más
+                         </a>
                     </div>
-               </div>
-
-
+               </article>
           </div>
-
 
           <aside>
                <nav>
-                    <a href="#godofwar">Imagenes God of war Ragnarok</a>
-                    <a href="#exitoventas">Exito en ventas</a>
-                    <a href="#gratismes">Juego gratuito del mes</a>
-                    <a href="#acvalhalla">Nuevo contenido descargable</a>
-                    <a href="#fifa21">Próxima actualizacion FIFA21</a>
-                    <a href="#recordventas">Record en ventas</a>
+                    <a href="#godofwar" class="aside-link">God of War Ragnarök</a>
+                    <a href="#exitoventas" class="aside-link">Éxito en ventas</a>
+                    <a href="#gratismes" class="aside-link">Juego gratuito del mes</a>
+                    <a href="#acvalhalla" class="aside-link">Nuevo DLC Valhalla</a>
+                    <a href="#fifa21" class="aside-link">Actualización FIFA 21</a>
+                    <a href="#recordventas" class="aside-link">Récord PlayStation 5</a>
                </nav>
           </aside>
      </section>
 
+     <!-- Newsletter -->
+     <section id="newsletter" class="newsletter">
+          <div class="newsletter-content">
+               <h2>¡Mantente actualizado!</h2>
+               <p>Recibe las últimas noticias de videojuegos directamente en tu correo</p>
+               <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Tu correo electrónico" required aria-label="Email para newsletter">
+                    <button type="submit" class="btn">
+                         <i class="fas fa-paper-plane"></i> Suscribirse
+                    </button>
+               </form>
+          </div>
+     </section>
 
-
-      <!-- Galeria de imagenes -->
+     <!-- Galería de imágenes -->
      <section id="gallery" class="gallery">
           <div class="column">
-               <div class="imgContainer">
-                    <img src="img/image1.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image1.jpg')">
+                    <img src="img/image1.jpg" alt="Gaming Image 1">
                </div>
-               
-               <div class="imgContainer">
-                    <img src="img/image2.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image2.jpg')">
+                    <img src="img/image2.jpg" alt="Gaming Image 2">
                </div>
-
-               <div class="imgContainer">
-                    <img src="img/image3.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image3.jpg')">
+                    <img src="img/image3.jpg" alt="Gaming Image 3">
                </div>
-
-               <div class="imgContainer">
-                    <img src="img/image4.jpg" alt="">
-
+               <div class="imgContainer" onclick="openLightbox('img/image4.jpg')">
+                    <img src="img/image4.jpg" alt="Gaming Image 4">
                </div>
           </div>
 
           <div class="column">
-               <div class="imgContainer">
-                    <img src="img/image5.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image5.jpg')">
+                    <img src="img/image5.jpg" alt="Gaming Image 5">
                </div>
-
-               <div class="imgContainer">
-                    <img src="img/image6.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image6.jpg')">
+                    <img src="img/image6.jpg" alt="Gaming Image 6">
                </div>
-
-               <div class="imgContainer">
-                    <img src="img/image7.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image7.jpg')">
+                    <img src="img/image7.jpg" alt="Gaming Image 7">
                </div>
-
-               <div class="imgContainer">
-                    <img src="img/image8.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image8.jpg')">
+                    <img src="img/image8.jpg" alt="Gaming Image 8">
                </div>
           </div>
 
           <div class="column">
-               <div class="imgContainer">
-                    <img src="img/image9.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image9.jpg')">
+                    <img src="img/image9.jpg" alt="Gaming Image 9">
                </div>
-
-               <div class="imgContainer">
-                    <img src="img/image10.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image10.jpg')">
+                    <img src="img/image10.jpg" alt="Gaming Image 10">
                </div>
-
-               <div class="imgContainer">
-                    <img src="img/image11.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image11.jpg')">
+                    <img src="img/image11.jpg" alt="Gaming Image 11">
                </div>
-
-               <div class="imgContainer">
-                    <img src="img/image12.jpg" alt="">
+               <div class="imgContainer" onclick="openLightbox('img/image12.jpg')">
+                    <img src="img/image12.jpg" alt="Gaming Image 12">
                </div>
           </div>
      </section>
 
+     <!-- Modal -->
+     <div id="modal" class="modal">
+          <div class="modal-content">
+               <span class="close" aria-label="Cerrar modal">&times;</span>
+               <div id="modalContent"></div>
+          </div>
+     </div>
 
-
-     <!-- Footer -->
+     <!-- Lightbox -->
+     <div id="lightbox" class="lightbox">
+          <span class="close-lightbox" aria-label="Cerrar lightbox">&times;</span>
+          <img id="lightbox-img" src="" alt="">
+     </div>
 
      <!-- Menu sociales -->
      <div class="nav-sociales">
-          <a href=""class="fab fa-facebook-f"></a>
-          <a href=""class="fab fa-twitter"></a>
-          <a href=""class="fab fa-instagram"></a>
-          <a href=""class="fab fa-youtube"></a>
-          <a href=""class="fab fa-twitch"></a>
-          <a href=""class="fab fa-discord"></a>
+          <a href="#" class="fab fa-facebook-f" aria-label="Facebook"></a>
+          <a href="#" class="fab fa-twitter" aria-label="Twitter"></a>
+          <a href="#" class="fab fa-instagram" aria-label="Instagram"></a>
+          <a href="#" class="fab fa-youtube" aria-label="YouTube"></a>
+          <a href="#" class="fab fa-twitch" aria-label="Twitch"></a>
+          <a href="#" class="fab fa-discord" aria-label="Discord"></a>
      </div>
 
      <!-- FOOTER Copyright -->
      <footer class="copy">
-          <p>®OmegaLull</p>
+          <p>&copy; 2023 Blog Videojuegos - OmegaLull. Todos los derechos reservados.</p>
      </footer>
+
+     <script>
+          // Enhanced functionality
+          const modal = document.getElementById('modal');
+          const modalContent = document.getElementById('modalContent');
+          const closeBtn = document.querySelector('.close');
+          const lightbox = document.getElementById('lightbox');
+          const lightboxImg = document.getElementById('lightbox-img');
+          const closeLightbox = document.querySelector('.close-lightbox');
+          const searchInput = document.getElementById('searchInput');
+          const filterBadges = document.querySelectorAll('.filter-badge');
+          const cards = document.querySelectorAll('.card');
+          const gameCards = document.querySelectorAll('.game');
+          const loadMoreBtn = document.getElementById('loadMoreBtn');
+          const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+          const navLinks = document.querySelector('.enlaces');
+          const btnTop = document.getElementById('btnTop');
+          const newsletterForm = document.getElementById('newsletterForm');
+
+          // Article content
+          const articles = {
+               'resident-evil': {
+                    title: 'Resident Evil Village: El juego más descargado',
+                    content: `
+                         <h2>Resident Evil Village: El juego más descargado</h2>
+                         <p>Resident Evil Village se ha convertido en el juego más descargado del mes, superando todas las expectativas de Capcom. Esta nueva entrega de la saga de terror ha logrado cautivar a millones de jugadores con su narrativa envolvente y gráficos de nueva generación.</p>
+                         <h3>Características destacadas:</h3>
+                         <ul>
+                              <li>Gráficos de nueva generación con ray tracing</li>
+                              <li>Narrativa cinematográfica envolvente</li>
+                              <li>Mecánicas de survival horror mejoradas</li>
+                              <li>Modo cooperativo online</li>
+                         </ul>
+                         <p>El juego está disponible para PlayStation 5, Xbox Series X/S y PC.</p>
+                    `
+               },
+               'crash': {
+                    title: 'Crash Bandicoot 4: It\'s About Time',
+                    content: `
+                         <h2>Crash Bandicoot 4: It\'s About Time</h2>
+                         <p>El marsupial más querido regresa con una nueva aventura que mantiene la esencia clásica mientras introduce innovadoras mecánicas de juego.</p>
+                         <h3>Características principales:</h3>
+                         <ul>
+                              <li>Nuevos poderes temporales</li>
+                              <li>Múltiples dimensiones para explorar</li>
+                              <li>Modo cooperativo local</li>
+                              <li>Niveles desafiantes y secretos</li>
+                         </ul>
+                    `
+               },
+               'uncharted': {
+                    title: 'Uncharted 4: A Thief\'s End',
+                    content: `
+                         <h2>Uncharted 4: A Thief\'s End</h2>
+                         <p>Nathan Drake emprende su última aventura en busca del tesoro perdido de Libertalia, enfrentando peligros y decisiones que cambiarán su vida para siempre.</p>
+                         <h3>Elementos destacados:</h3>
+                         <ul>
+                              <li>Narrativa cinematográfica</li>
+                              <li>Exploración de mundo abierto</li>
+                              <li>Puzzles ingeniosos</li>
+                              <li>Gráficos impresionantes</li>
+                         </ul>
+                    `
+               },
+               'gow': {
+                    title: 'God of War (2018)',
+                    content: `
+                         <h2>God of War (2018)</h2>
+                         <p>Kratos y Atreus viajan por los nueve reinos nórdicos en una búsqueda personal que los llevará a enfrentar dioses y monstruos legendarios.</p>
+                         <h3>Innovaciones:</h3>
+                         <ul>
+                              <li>Nueva mitología nórdica</li>
+                              <li>Sistema de combate renovado</li>
+                              <li>Relación padre-hijo</li>
+                              <li>Mundo semi-abierto</li>
+                         </ul>
+                    `
+               },
+               'ac': {
+                    title: 'Assassin\'s Creed Valhalla',
+                    content: `
+                         <h2>Assassin\'s Creed Valhalla</h2>
+                         <p>Conviértete en Eivor, un legendario vikingo, y lidera tu clan en la conquista de Inglaterra durante la era de los vikingos.</p>
+                         <h3>Características:</h3>
+                         <ul>
+                              <li>Era vikinga detallada</li>
+                              <li>Sistema de asentamiento</li>
+                              <li>Combate brutal</li>
+                              <li>Exploración de Inglaterra</li>
+                         </ul>
+                    `
+               },
+               'godofwar': {
+                    title: 'God of War Ragnarök: Imágenes exclusivas',
+                    content: `
+                         <h2>God of War Ragnarök: Imágenes exclusivas</h2>
+                         <p>Explora las nuevas imágenes del esperado God of War Ragnarök, donde Kratos y Atreus enfrentarán el Ragnarök en una aventura épica que promete ser la más ambiciosa de la saga.</p>
+                    `
+               },
+               'exitoventas': {
+                    title: 'Éxito récord en ventas de videojuegos',
+                    content: `
+                         <h2>Éxito récord en ventas de videojuegos</h2>
+                         <p>El mercado de videojuegos alcanza nuevos récords históricos con ventas que superan las expectativas, impulsado por la alta demanda de consolas y títulos AAA.</p>
+                         <h3>Datos destacados:</h3>
+                         <ul>
+                              <li>Ventas récord en consolas de nueva generación</li>
+                              <li>Crecimiento del 15% en el mercado digital</li>
+                              <li>Mayor participación de jugadores casuales</li>
+                              <li>Expansión del mercado móvil</li>
+                         </ul>
+                    `
+               },
+               'gratismes': {
+                    title: 'Juego gratuito del mes: Horizon Zero Dawn',
+                    content: `
+                         <h2>Juego gratuito del mes: Horizon Zero Dawn</h2>
+                         <p>Sony anuncia que Horizon Zero Dawn será gratuito este mes en PlayStation Plus, permitiendo a millones de jugadores disfrutar de esta obra maestra.</p>
+                         <h3>Detalles:</h3>
+                         <ul>
+                              <li>Disponible del 1 al 30 de noviembre</li>
+                              <li>Incluye la edición completa del juego</li>
+                              <li>Compatibilidad con PS4 y PS5</li>
+                              <li>Mejoras de rendimiento en PS5</li>
+                         </ul>
+                    `
+               },
+               'acvalhalla': {
+                    title: 'Nuevo DLC para Assassin\'s Creed Valhalla',
+                    content: `
+                         <h2>Nuevo DLC para Assassin\'s Creed Valhalla</h2>
+                         <p>Ubisoft revela el nuevo contenido descargable "Dawn of Ragnarök" que expandirá la historia de Eivor con elementos de la mitología nórdica.</p>
+                         <h3>Contenido del DLC:</h3>
+                         <ul>
+                              <li>Nueva región para explorar</li>
+                              <li>Armas y equipamiento únicos</li>
+                              <li>Nuevas habilidades de combate</li>
+                              <li>Historia expandida</li>
+                         </ul>
+                    `
+               },
+               'fifa21': {
+                    title: 'Próxima actualización FIFA 21: Nuevas ligas',
+                    content: `
+                         <h2>Próxima actualización FIFA 21: Nuevas ligas</h2>
+                         <p>EA Sports anuncia la próxima actualización que incluirá nuevas ligas, estadios y mejoras en la inteligencia artificial del juego.</p>
+                         <h3>Nuevas características:</h3>
+                         <ul>
+                              <li>Ligas adicionales incluidas</li>
+                              <li>Mejoras en la IA del juego</li>
+                              <li>Nuevos estadios</li>
+                              <li>Actualización de plantillas</li>
+                         </ul>
+                    `
+               },
+               'recordventas': {
+                    title: 'PlayStation 5: Récord en ventas',
+                    content: `
+                         <h2>PlayStation 5: Récord en ventas</h2>
+                         <p>La PlayStation 5 alcanza un nuevo récord de ventas, superando las expectativas de Sony y consolidándose como la consola más vendida del año.</p>
+                         <h3>Logros destacados:</h3>
+                         <ul>
+                              <li>Más de 10 millones de unidades vendidas</li>
+                              <li>Mayor velocidad de adopción de la historia</li>
+                              <li>Alta demanda sostenida</li>
+                              <li>Éxito en múltiples regiones</li>
+                         </ul>
+                    `
+               }
+          };
+
+          // Show article modal
+          function showArticle(articleId) {
+               if (articles[articleId]) {
+                    modalContent.innerHTML = articles[articleId].content;
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+               }
+          }
+
+          // Modal functionality
+          closeBtn.onclick = function() {
+               modal.style.display = 'none';
+               document.body.style.overflow = 'auto';
+          }
+
+          window.onclick = function(event) {
+               if (event.target == modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+               }
+          }
+
+          // Lightbox functionality
+          function openLightbox(imgSrc) {
+               lightboxImg.src = imgSrc;
+               lightbox.style.display = 'flex';
+               document.body.style.overflow = 'hidden';
+          }
+
+          closeLightbox.onclick = function() {
+               lightbox.style.display = 'none';
+               document.body.style.overflow = 'auto';
+          }
+
+          window.onclick = function(event) {
+               if (event.target == lightbox) {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+               }
+          }
+
+          // Filter functionality
+          filterBadges.forEach(badge => {
+               badge.addEventListener('click', () => {
+                    const filter = badge.dataset.filter;
+                    
+                    filterBadges.forEach(b => b.classList.remove('active'));
+                    badge.classList.add('active');
+
+                    cards.forEach(card => {
+                         if (filter === 'all' || card.dataset.category === filter) {
+                              card.style.display = 'block';
+                              card.style.animation = 'fadeInUp 0.6s ease forwards';
+                         } else {
+                              card.style.display = 'none';
+                         }
+                    });
+               });
+          });
+
+          // Search functionality
+          searchInput.addEventListener('input', (e) => {
+               const searchTerm = e.target.value.toLowerCase();
+               
+               cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const content = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                         card.style.display = 'block';
+                    } else {
+                         card.style.display = 'none';
+                    }
+               });
+          });
+
+          // Newsletter functionality
+          newsletterForm.addEventListener('submit', (e) => {
+               e.preventDefault();
+               const email = e.target.querySelector('input[type="email"]').value;
+               
+               // Show success message
+               const successMsg = document.createElement('div');
+               successMsg.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(135deg, var(--color-principal), var(--color-secundario));
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 10px;
+                    z-index: 1000;
+                    animation: slideInRight 0.5s ease;
+               `;
+               successMsg.innerHTML = '<i class="fas fa-check"></i> ¡Gracias por suscribirte!';
+               document.body.appendChild(successMsg);
+               
+               setTimeout(() => {
+                    successMsg.remove();
+               }, 3000);
+               
+               e.target.reset();
+          });
+
+          // Scroll to top functionality
+          window.addEventListener('scroll', () => {
+               if (window.pageYOffset > 300) {
+                    btnTop.style.display = 'flex';
+               } else {
+                    btnTop.style.display = 'none';
+               }
+          });
+
+          btnTop.addEventListener('click', () => {
+               window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+
+          // Mobile menu functionality
+          mobileMenuBtn.addEventListener('click', () => {
+               navLinks.classList.toggle('active');
+               mobileMenuBtn.classList.toggle('active');
+          });
+
+          // Smooth scrolling for navigation links
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+               anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                         target.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'start'
+                         });
+                    }
+               });
+          });
+
+          // Load more functionality
+          if (loadMoreBtn) {
+               loadMoreBtn.addEventListener('click', () => {
+                    loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cargando...';
+                    loadMoreBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                         loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> Cargar más juegos';
+                         loadMoreBtn.disabled = false;
+                         
+                         const successMsg = document.createElement('div');
+                         successMsg.style.cssText = `
+                              position: fixed;
+                              top: 20px;
+                              right: 20px;
+                              background: linear-gradient(135deg, var(--color-principal), var(--color-secundario));
+                              color: white;
+                              padding: 15px 25px;
+                              border-radius: 10px;
+                              z-index: 1000;
+                              animation: slideInRight 0.5s ease;
+                         `;
+                         successMsg.innerHTML = '<i class="fas fa-check"></i> Más juegos cargados';
+                         document.body.appendChild(successMsg);
+                         
+                         setTimeout(() => {
+                              successMsg.remove();
+                         }, 3000);
+                    }, 2000);
+               });
+          }
+
+          // Enhanced game card interactions
+          gameCards.forEach(card => {
+               card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+               });
+               
+               card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+               });
+          });
+
+          // Keyboard navigation
+          document.addEventListener('keydown', (e) => {
+               if (e.key === 'Escape') {
+                    if (modal.style.display === 'block') {
+                         modal.style.display = 'none';
+                         document.body.style.overflow = 'auto';
+                    }
+                    if (lightbox.style.display === 'flex') {
+                         lightbox.style.display = 'none';
+                         document.body.style.overflow = 'auto';
+                    }
+               }
+          });
+
+          // Intersection Observer for animations
+          const observerOptions = {
+               threshold: 0.1,
+               rootMargin: '0px 0px -50px 0px'
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+               entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                         entry.target.classList.add('animate-in');
+                    }
+               });
+          }, observerOptions);
+
+          // Observe elements for animation
+          document.querySelectorAll('.card, .game, .imgContainer').forEach(el => {
+               observer.observe(el);
+          });
+     </script>
 </body>
 </html>
