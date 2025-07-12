@@ -4,6 +4,7 @@
      --text-color-claro: #86868B;
      --color-enlaces: #06C;
      --color-background: #FAFAFA;
+     --transition: all 0.3s ease;
 }
 
 
@@ -14,6 +15,11 @@ body::-webkit-scrollbar{
 
 body::-webkit-scrollbar-thumb{
      background: var(--text-color);
+     border-radius: 4px;
+}
+
+body::-webkit-scrollbar-track{
+     background: #f1f1f1;
 }
 
 
@@ -64,6 +70,11 @@ h3{
 
 img{
      width: 100%;
+     transition: var(--transition);
+}
+
+img:hover{
+     transform: scale(1.02);
 }
 
 section{
@@ -80,10 +91,21 @@ section{
      font-size: 21px;
      margin-top: 30px;
      color: var(--color-enlaces);
+     transition: var(--transition);
+     position: relative;
 }
 
 .enlace-info:hover{
      text-decoration: underline;
+     transform: translateX(5px);
+}
+
+.enlace-info span{
+     transition: var(--transition);
+}
+
+.enlace-info:hover span{
+     transform: translateX(3px);
 }
 
 
@@ -156,11 +178,29 @@ nav .enlaces a{
      padding: 0 10px;
      opacity: .8;
      cursor: pointer;
-     transition: all .3s;
+     transition: var(--transition);
+     position: relative;
 }
 
 nav .enlaces a:hover{
      opacity: 1;
+     transform: translateY(-1px);
+}
+
+nav .enlaces a::after {
+     content: '';
+     position: absolute;
+     bottom: -2px;
+     left: 50%;
+     width: 0;
+     height: 2px;
+     background: #F5F5F7;
+     transition: all 0.3s ease;
+     transform: translateX(-50%);
+}
+
+nav .enlaces a:hover::after {
+     width: 80%;
 }
 
 
@@ -370,9 +410,10 @@ footer{
 footer img{
      width: 16px;
      opacity: .2;
-     transition: all .5s;
+     transition: var(--transition);
 }
 
 footer:hover img{
      opacity: 1;
+     transform: scale(1.1);
 }
