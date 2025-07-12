@@ -1,84 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Note</title>
+    <title>Note of the Day</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../fonts/fontawesome/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         body{
-            background: #03f46f;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 120px 20px;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+            animation: backgroundFloat 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-20px, -20px) scale(1.1); }
+            66% { transform: translate(20px, 20px) scale(0.9); }
+        }
+
+        .container{
+            position: relative;
+            width: 600px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+            margin: 20px 0;
+        }
 
         .box{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
             width: 500px;
             height: 400px;
-            perspective: 2000px;
             transform-style: preserve-3d;
-            transition: all .5s;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
         }
 
         .box::before{
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            border-top: 20px solid #FFF;
-            border-left: 20px solid #FFF;
-            box-sizing: border-box;
+            top: -6px;
+            left: -6px;
+            width: calc(100% + 12px);
+            height: calc(100% + 12px);
+            border: 3px solid #ff6b6b;
+            border-radius: 12px;
+            transform: translateZ(-15px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: borderPulse 3s ease-in-out infinite;
         }
 
         .box::after{
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            border-right: 20px solid #FFF;
-            border-bottom: 20px solid #FFF;
-            box-sizing: border-box;
+            top: -3px;
+            left: -3px;
+            width: calc(100% + 6px);
+            height: calc(100% + 6px);
+            border: 2px solid #4ecdc4;
+            border-radius: 12px;
+            transform: translateZ(-8px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: borderPulse 3s ease-in-out infinite reverse;
         }
 
+        @keyframes borderPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
 
         .box:hover{
-            transform: translate(-50%, -50%) rotateY(-30deg) skew(5deg);
+            transform: translateY(-12px) rotateY(-12deg) rotateX(3deg);
         }
 
+        .box:hover::before {
+            transform: translateZ(-15px) rotateY(-12deg) rotateX(3deg) scale(1.08);
+            animation-play-state: paused;
+        }
+
+        .box:hover::after {
+            transform: translateZ(-8px) rotateY(-12deg) rotateX(3deg) scale(1.05);
+            animation-play-state: paused;
+        }
 
         .text{
-        position: absolute;
-            top: 30px;
-            left: -30px;
-            background: #262626;
-            width: calc(100% + 60px);
-            height: calc(100% - 60px);
-            transition: all .5s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(145deg, #2c3e50, #34495e);
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transform: translateZ(0);
         }
 
+        .text::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent);
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: all 0.8s ease;
+        }
+
+        .text:hover::before {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
 
         .text:hover{
-            transform: rotateY(30deg) skew(-5deg); 
+            transform: translateZ(10px) rotateY(8deg) rotateX(-2deg) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
         }
-
 
         .text div{
             position: absolute;
@@ -86,55 +158,480 @@
             left: 0;
             width: 100%;
             transform: translateY(-50%);
-            padding: 40px 80px;
+            padding: 40px 50px;
             text-align: center;
             z-index: 1;
         }
 
-        .text div h1,
-        .text div p{
-            margin: 0 0 20px;
+        .text div h1{
+            margin: 0 0 25px;
             color: #FFF;
+            font-size: 2.2em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            transition: all 0.5s ease;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .text div p{
-            font-size: 18px;
+            margin: 0;
+            color: #ecf0f1;
+            font-size: 1.1em;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
+        }
+
+        .text:hover div h1 {
+            transform: translateY(-3px) scale(1.05);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+
+        .text:hover div p {
+            transform: translateY(-2px);
+            color: #ffffff;
         }
 
         i{
-            width: 80px;
-            height: 80px;
-            background: #FFF;
-            color: #262626;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: #FFF;
             text-align: center;
-            line-height: 80px !important;
-            font-size: 40px;
+            line-height: 50px !important;
+            font-size: 20px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
+            cursor: pointer;
         }
 
         i.fa1{
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 15px;
+            left: 15px;
+            transform: translateZ(5px);
+            animation: float1 3s ease-in-out infinite;
         }
 
         i.fa2{
             position: absolute;
-            bottom: 0;
-            right: 0;
+            bottom: 15px;
+            right: 15px;
             z-index: 1;
+            transform: translateZ(5px);
+            animation: float2 3s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateZ(5px) translateY(0px); }
+            50% { transform: translateZ(5px) translateY(-8px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateZ(5px) translateY(0px); }
+            50% { transform: translateZ(5px) translateY(8px); }
+        }
+
+        .text:hover i {
+            transform: translateZ(10px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            animation-play-state: paused;
+        }
+
+        /* New interactive elements */
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 15px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .date-display {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 100;
+        }
+
+        .scroll-indicator:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .scroll-indicator i {
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Loading animation */
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 3px solid transparent;
+            border-top-color: #ff6b6b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 100;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 60px 15px 100px 15px;
+            }
+            
+            .container {
+                width: 100%;
+                height: auto;
+                margin: 10px 0;
+            }
+            
+            .box {
+                width: 90vw;
+                height: 350px;
+            }
+            
+            .text div {
+                padding: 30px 20px;
+            }
+            
+            .text div h1 {
+                font-size: 1.8em;
+            }
+            
+            .text div p {
+                font-size: 1em;
+            }
+
+            .controls {
+                bottom: 15px;
+                gap: 8px;
+                padding: 12px 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .date-display {
+                top: 15px;
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+
+            .scroll-indicator {
+                bottom: 80px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .controls {
+                flex-direction: column;
+                gap: 5px;
+                padding: 10px 15px;
+            }
+
+            .btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles for accessibility */
+        .btn:focus,
+        i:focus {
+            outline: 2px solid #4ecdc4;
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <div class="box">
-        <i class="fa2 fas fa-quote-left"></i>
-        <div class="text">
-            <i class="fa1 fas fa-quote-right"></i>
-            <div>
-                <h1>Nota del dia</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ipsum ex vero sed, officiis dignissimos laboriosam adipisci quo a molestiae consequuntur eveniet assumenda officia eligendi aperiam unde maxime corrupti in.</p>
+    <div class="date-display" id="dateDisplay"></div>
+    
+    <div class="container">
+        <div class="box" id="noteBox">
+            <i class="fa2 fas fa-quote-left" id="quoteLeft"></i>
+            <div class="text" id="noteText">
+                <i class="fa1 fas fa-quote-right" id="quoteRight"></i>
+                <div id="noteContent">
+                    <h1 id="noteTitle">Nota del día</h1>
+                    <p id="noteMessage">La creatividad es la inteligencia divirtiéndose. Cada día es una nueva oportunidad para crear algo extraordinario.</p>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="controls">
+        <button class="btn" id="newNoteBtn">
+            <i class="fas fa-sync-alt"></i> Nueva Nota
+        </button>
+        <button class="btn" id="themeBtn">
+            <i class="fas fa-palette"></i> Tema
+        </button>
+    </div>
+
+    <div class="scroll-indicator" id="scrollIndicator" style="opacity: 0; transform: scale(0.8);">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Daily inspirational quotes
+        const quotes = [
+            {
+                title: "Nota del día",
+                message: "La creatividad es la inteligencia divirtiéndose. Cada día es una nueva oportunidad para crear algo extraordinario."
+            },
+            {
+                title: "Inspiración",
+                message: "El éxito no es final, el fracaso no es fatal: es el coraje para continuar lo que cuenta."
+            },
+            {
+                title: "Motivación",
+                message: "La vida es como montar en bicicleta. Para mantener el equilibrio, debes seguir moviéndote."
+            },
+            {
+                title: "Sabiduría",
+                message: "El conocimiento es poder, pero la sabiduría es libertad."
+            },
+            {
+                title: "Innovación",
+                message: "La innovación distingue entre un líder y un seguidor."
+            },
+            {
+                title: "Perseverancia",
+                message: "La perseverancia es el trabajo duro que haces después de estar cansado del trabajo duro que ya hiciste."
+            },
+            {
+                title: "Crecimiento",
+                message: "El crecimiento comienza al final de tu zona de confort."
+            },
+            {
+                title: "Excelencia",
+                message: "La excelencia no es una habilidad, es una actitud."
+            }
+        ];
+
+        // Color themes
+        const themes = [
+            { primary: '#ff6b6b', secondary: '#4ecdc4', bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
+            { primary: '#a8e6cf', secondary: '#dcedc1', bg: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)' },
+            { primary: '#ffd93d', secondary: '#ff6b6b', bg: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
+            { primary: '#6c5ce7', secondary: '#a29bfe', bg: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }
+        ];
+
+        let currentTheme = 0;
+        let currentQuote = 0;
+
+        // DOM elements
+        const dateDisplay = document.getElementById('dateDisplay');
+        const noteTitle = document.getElementById('noteTitle');
+        const noteMessage = document.getElementById('noteMessage');
+        const newNoteBtn = document.getElementById('newNoteBtn');
+        const themeBtn = document.getElementById('themeBtn');
+        const noteBox = document.getElementById('noteBox');
+        const scrollIndicator = document.getElementById('scrollIndicator');
+
+        // Initialize
+        function init() {
+            updateDate();
+            setQuote(0);
+            addEventListeners();
+            updateScrollIndicator();
+        }
+
+        // Update date display
+        function updateDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            dateDisplay.textContent = now.toLocaleDateString('es-ES', options);
+        }
+
+        // Set quote
+        function setQuote(index) {
+            const quote = quotes[index];
+            noteTitle.textContent = quote.title;
+            noteMessage.textContent = quote.message;
+            
+            // Add animation
+            noteTitle.style.opacity = '0';
+            noteMessage.style.opacity = '0';
+            
+            setTimeout(() => {
+                noteTitle.style.opacity = '1';
+                noteMessage.style.opacity = '1';
+            }, 300);
+        }
+
+        // Change theme
+        function changeTheme() {
+            currentTheme = (currentTheme + 1) % themes.length;
+            const theme = themes[currentTheme];
+            
+            document.documentElement.style.setProperty('--primary-color', theme.primary);
+            document.documentElement.style.setProperty('--secondary-color', theme.secondary);
+            
+            // Update CSS variables
+            const style = document.createElement('style');
+            style.textContent = `
+                body { background: ${theme.bg} !important; }
+                .box::before { border-color: ${theme.primary} !important; }
+                .box::after { border-color: ${theme.secondary} !important; }
+                i { background: linear-gradient(135deg, ${theme.primary}, ${theme.secondary}) !important; }
+                .btn { background: linear-gradient(135deg, ${theme.primary}, ${theme.secondary}) !important; }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Update scroll indicator visibility
+        function updateScrollIndicator() {
+            const scrollTop = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            if (scrollTop > windowHeight * 0.5) { // Show when scrolled down a bit
+                scrollIndicator.style.opacity = '1';
+                scrollIndicator.style.transform = 'scale(1)';
+            } else {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.transform = 'scale(0.8)';
+            }
+        }
+
+        // Add event listeners
+        function addEventListeners() {
+            newNoteBtn.addEventListener('click', () => {
+                currentQuote = (currentQuote + 1) % quotes.length;
+                setQuote(currentQuote);
+                scrollToTop();
+            });
+
+            themeBtn.addEventListener('click', () => {
+                changeTheme();
+                scrollToTop();
+            });
+
+            // Scroll indicator click
+            scrollIndicator.addEventListener('click', scrollToTop);
+
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    currentQuote = (currentQuote + 1) % quotes.length;
+                    setQuote(currentQuote);
+                    scrollToTop();
+                }
+            });
+
+            // Add click animation to box
+            noteBox.addEventListener('click', () => {
+                noteBox.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    noteBox.style.transform = '';
+                }, 150);
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+        window.addEventListener('scroll', updateScrollIndicator);
+    </script>
 </body>
 </html>
