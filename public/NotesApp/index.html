@@ -1,47 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplocacion de Notas</title>
+    <meta name="description" content="Aplicación de notas moderna y funcional para organizar tus ideas">
+    <meta name="keywords" content="notas, organizador, tareas, ideas, app">
+    <title>Aplicación de Notas - Organiza tus Ideas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Mis Notas</h1>
+            <div class="header-content">
+                <h1><i class="fas fa-sticky-note"></i> Mis Notas</h1>
+                <div class="header-actions">
+                    <button class="btn-header" id="toggleTheme" title="Cambiar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn-header" id="exportNotes" title="Exportar notas">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
     
     <div class="container">
         <div class="app-container">
             <!-- Sidebar con lista de notas -->
-            <div class="notas-lista">
+            <aside class="notas-lista">
                 <div class="notas-header">
-                    <h2>Notas</h2>
-                    <button class="btn-nueva" id="nuevaNota">+ Nueva</button>
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" id="searchInput" placeholder="Buscar notas...">
+                    </div>
+                    <button class="btn-nueva" id="nuevaNota" title="Nueva nota (Ctrl+N)">
+                        <i class="fas fa-plus"></i> Nueva
+                    </button>
                 </div>
+                
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-list"></i> Todas
+                    </button>
+                    <button class="filter-btn" data-filter="favorites">
+                        <i class="fas fa-star"></i> Favoritas
+                    </button>
+                    <button class="filter-btn" data-filter="recent">
+                        <i class="fas fa-clock"></i> Recientes
+                    </button>
+                </div>
+                
                 <div class="notas-items" id="notasLista">
                     <!-- Las notas se generarán dinámicamente aquí -->
                 </div>
-            </div>
+            </aside>
             
             <!-- Editor de notas -->
-            <div class="nota-editor" id="notaEditor">
+            <main class="nota-editor" id="notaEditor">
                 <div class="editor-header">
-                    <input type="text" class="editor-input" id="notaTitulo" placeholder="Título de la nota">
+                    <div class="editor-title-section">
+                        <input type="text" class="editor-input" id="notaTitulo" placeholder="Título de la nota">
+                        <div class="note-actions">
+                            <button class="btn-icon" id="toggleFavorite" title="Marcar como favorita">
+                                <i class="far fa-star"></i>
+                            </button>
+                            <button class="btn-icon" id="shareNote" title="Compartir nota">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                        </div>
+                    </div>
                     <div class="editor-actions">
-                        <button class="btn btn-guardar" id="guardarNota">Guardar</button>
-                        <button class="btn btn-eliminar" id="eliminarNota">Eliminar</button>
+                        <button class="btn btn-guardar" id="guardarNota" title="Guardar (Ctrl+S)">
+                            <i class="fas fa-save"></i> Guardar
+                        </button>
+                        <button class="btn btn-eliminar" id="eliminarNota" title="Eliminar (Delete)">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
                     </div>
                 </div>
-                <textarea class="editor-textarea" id="notaContenido" placeholder="Escribe tu nota aquí..."></textarea>
-            </div>
+                
+                <div class="editor-content">
+                    <div class="editor-toolbar">
+                        <button class="toolbar-btn" data-format="bold" title="Negrita (Ctrl+B)">
+                            <i class="fas fa-bold"></i>
+                            <span class="shortcut-indicator">B</span>
+                        </button>
+                        <button class="toolbar-btn" data-format="italic" title="Cursiva (Ctrl+I)">
+                            <i class="fas fa-italic"></i>
+                            <span class="shortcut-indicator">I</span>
+                        </button>
+                        <button class="toolbar-btn" data-format="underline" title="Subrayado (Ctrl+U)">
+                            <i class="fas fa-underline"></i>
+                            <span class="shortcut-indicator">U</span>
+                        </button>
+                        <div class="toolbar-separator"></div>
+                        <button class="toolbar-btn" data-format="list" title="Lista con viñeta">
+                            <i class="fas fa-list-ul"></i>
+                        </button>
+                        <button class="toolbar-btn" data-format="link" title="Crear enlace">
+                            <i class="fas fa-link"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="editor-textarea" id="notaContenido" contenteditable="true" placeholder="Escribe tu nota aquí...&#10;&#10;Consejos de formato:&#10;• Selecciona texto y usa Ctrl+B para negrita&#10;• Selecciona texto y usa Ctrl+I para cursiva&#10;• Selecciona texto y usa Ctrl+U para subrayado&#10;• Usa Ctrl+S para guardar automáticamente&#10;&#10;Ejemplos:&#10;**Texto en negrita**&#10;*Texto en cursiva*&#10;__Texto subrayado__"></div>
+                </div>
+                
+                <div class="editor-footer">
+                    <div class="word-count">
+                        <span id="wordCount">0 palabras</span>
+                    </div>
+                    <div class="last-saved">
+                        <span id="lastSaved">No guardado</span>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
     
     <!-- Contenedor para mensajes -->
     <div class="mensajes" id="mensajes"></div>
+    
+    <!-- Modal de confirmación -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Confirmar acción</h3>
+            <p id="modalMessage">¿Estás seguro de que quieres realizar esta acción?</p>
+            <div class="modal-actions">
+                <button class="btn btn-cancel" id="cancelAction">Cancelar</button>
+                <button class="btn btn-confirm" id="confirmAction">Confirmar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Atajos de teclado -->
+    <div class="shortcuts-help" id="shortcutsHelp">
+        <div class="shortcuts-content">
+            <h3><i class="fas fa-keyboard"></i> Atajos de Teclado</h3>
+            <div class="shortcuts-grid">
+                <div class="shortcut-item">
+                    <kbd>Ctrl + N</kbd>
+                    <span>Nueva nota</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Ctrl + S</kbd>
+                    <span>Guardar</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Delete</kbd>
+                    <span>Eliminar nota</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Ctrl + F</kbd>
+                    <span>Buscar</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Ctrl + B</kbd>
+                    <span>Negrita</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Ctrl + I</kbd>
+                    <span>Cursiva</span>
+                </div>
+            </div>
+            <button class="btn btn-secondary" id="closeShortcuts">
+                <i class="fas fa-times"></i> Cerrar
+            </button>
+        </div>
+    </div>
+    
     <script src="main.js"></script>
 </body>
 </html>
