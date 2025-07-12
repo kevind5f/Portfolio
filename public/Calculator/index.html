@@ -1,37 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <meta name="description" content="Calculadora moderna con diseño elegante y funcionalidades avanzadas">
+    <meta name="keywords" content="calculadora, matemáticas, operaciones, OmegaLull">
+    <title>Calculadora - OmegaLull</title>
     <link rel="stylesheet" href="stylesheets.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="calculadora">
-        <div class="pantalla">
-            <div class="entrada" id="entrada"></div>
-            <div class="resultado" id="resultado">0</div>
+    <div class="calculadora" role="main" aria-label="Calculadora">
+        <div class="pantalla" aria-live="polite">
+            <div class="entrada" id="entrada" aria-label="Operación actual"></div>
+            <div class="resultado" id="resultado" aria-label="Resultado">0</div>
         </div>
-        <div class="botones">
-            <button class="borrar" id="borrar-todo">AC</button>
-            <button class="borrar" id="borrar">CE</button>
-            <button class="operador">%</button>
-            <button class="operador">÷</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button class="operador">×</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button class="operador">-</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="operador">+</button>
-            <button>0</button>
-            <button>.</button>
-            <button class="igual">=</button>
+        <div class="botones" role="group" aria-label="Teclado de la calculadora">
+            <button class="borrar" id="borrar-todo" aria-label="Borrar todo">AC</button>
+            <button class="borrar" id="borrar" aria-label="Borrar último">CE</button>
+            <button class="operador" aria-label="Porcentaje">%</button>
+            <button class="operador" aria-label="Dividir">÷</button>
+            <button aria-label="Siete">7</button>
+            <button aria-label="Ocho">8</button>
+            <button aria-label="Nueve">9</button>
+            <button class="operador" aria-label="Multiplicar">×</button>
+            <button aria-label="Cuatro">4</button>
+            <button aria-label="Cinco">5</button>
+            <button aria-label="Seis">6</button>
+            <button class="operador" aria-label="Restar">-</button>
+            <button aria-label="Uno">1</button>
+            <button aria-label="Dos">2</button>
+            <button aria-label="Tres">3</button>
+            <button class="operador" aria-label="Sumar">+</button>
+            <button aria-label="Cero">0</button>
+            <button aria-label="Punto decimal">.</button>
+            <button class="igual" aria-label="Igual">=</button>
+        </div>
+        <div class="info">
+            <p>Usa el teclado para operaciones rápidas</p>
         </div>
     </div>
     <script src="main.js"></script>
