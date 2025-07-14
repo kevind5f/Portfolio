@@ -49,6 +49,55 @@ function removeFromCart(idx) {
   updateCartUI();
 }
 
+// ========== MENÚ HAMBURGUESA ==========
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+// Crear overlay para cerrar menú móvil
+let overlay = document.getElementById('mobile-menu-overlay');
+if (!overlay) {
+  overlay = document.createElement('div');
+  overlay.id = 'mobile-menu-overlay';
+  document.body.appendChild(overlay);
+}
+
+function openMobileMenu() {
+  hamburgerBtn.classList.add('active');
+  mobileMenu.classList.add('show');
+  mobileMenu.hidden = false;
+  overlay.classList.add('show');
+  hamburgerBtn.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  hamburgerBtn.classList.remove('active');
+  mobileMenu.classList.remove('show');
+  setTimeout(() => { mobileMenu.hidden = true; }, 350);
+  overlay.classList.remove('show');
+  hamburgerBtn.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+hamburgerBtn.addEventListener('click', () => {
+  if (mobileMenu.classList.contains('show')) {
+    closeMobileMenu();
+  } else {
+    openMobileMenu();
+  }
+});
+overlay.addEventListener('click', closeMobileMenu);
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) closeMobileMenu();
+});
+// Cerrar con ESC
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('show')) closeMobileMenu();
+});
+// Accesibilidad: cerrar al hacer click en un enlace
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
 // ========== EVENTOS ==========
 document.querySelectorAll('.btn.buy').forEach(btn => {
   btn.addEventListener('click', e => {

@@ -5,7 +5,7 @@ export default createStore({
   state: {
     skills: [
       {category: 'Frontend', items: ['HTML', 'CSS', 'Javascript', 'Vue.js', 'Nuxt.js', 'Bootstrap', 'Tailwind CSS', 'Jquery', 'Ajax', 'Materialize', 'Bootstrap', 'SASS', 'Grid Layout', 'Flexbox', 'Responsive Design', 'HoudiniCSS']},
-      {category: 'Backend', items: ['C#', 'SQL', 'SQL Server', 'MySQL', 'SQL Lite', 'MongoDB', 'PHP', 'Node.js', 'Express.js','Python', 'Flask', 'Nuxt.js']},
+      {category: 'Backend', items: ['C#', 'SQL', 'SQL Server', 'MySQL', 'SQL Lite', 'MongoDB', 'PHP', 'Node.js', 'Express.js','Python', 'Flask', 'Nuxt.js', 'Laravel', '.NET']},
       {category: 'Control de Versiones', items: ['Git', 'GitHub', 'GitLabs', 'GitKraken']},
       {category: 'Gestion', items: ['Scrum', 'Notion', 'Obsidian', 'PowerBI']},
       {category: 'Microsoft', items: ['MS Project', 'PowerPoint', 'Excel', 'Word', 'Visio']},
@@ -14,108 +14,115 @@ export default createStore({
     projects: [
       {
         name: 'Note of the day', 
-        description: 'This page features a modern, interactive web design that combines stylistic elements and 3D visual effects to create an engaging and dynamic experience. The design includes a floating card that reacts to the hover of the cursor.',
+        description: 'Aplicación web moderna e interactiva que destaca por su diseño estilizado y efectos visuales 3D. Presenta una tarjeta flotante que reacciona dinámicamente al movimiento del cursor, creando una experiencia envolvente y atractiva para el usuario.',
         link: '/NoteOfTheDay/index.html', 
         img: '/assets/NoteOfTheDay.png',
         technologies: ['HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Skyline New York',
-        description: 'This website uses a clean, minimalist design to highlight an animated header that integrates images of skylines and a dynamic scrolling effect.',
+        description: 'Sitio web minimalista que resalta un encabezado animado con imágenes de skylines y un efecto de desplazamiento dinámico. El diseño limpio y elegante permite que los elementos visuales sean los protagonistas.',
         link: '/NewYork/index.html',
         img: '/assets/NewYork.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Online Technology Store',
-        description: 'This technology product page features a clean, modern design that highlights the company`s main features. Its minimalist approach allows key information and products to stand out clearly, providing an attractive and easy-to-navigate visual experience for users.',
+        description: 'Página de productos tecnológicos con un diseño moderno y minimalista. Destaca las principales características de la empresa y productos, priorizando la claridad, la navegación intuitiva y una experiencia visual atractiva.',
         link: '/tiendaOnline/index.html',
         img: '/assets/Online.png',
         technologies: [' HTML', 'CSS', 'Javascript', 'Bootstrap']
       },
       {
         name: 'Cards',
-        description: 'The design uses smooth transitions and a blur effect on the content to create an immersive visual experience. It is ideal for showcasing profiles, projects or services in a stylish and professional manner.',
+        description: 'Diseño de tarjetas con transiciones suaves y efecto blur, ideal para mostrar perfiles, proyectos o servicios de manera elegante y profesional. La experiencia visual es inmersiva y sofisticada.',
         link: '/Cards/index.html',
         img: '/assets/Cards.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Video Games',
-        description: 'Visually appealing and easy to navigate website that provides users with an interactive experience while exploring video game related content. The project is fully functional and adapts to different devices, providing an accessible and friendly design.',
+        description: 'Web interactiva y visualmente atractiva para explorar contenido relacionado con videojuegos. Ofrece una experiencia dinámica, adaptada a dispositivos móviles y fácil de navegar.',
         link: '/BlogVideoJuegos/index.html',
         img: '/assets/VideoGames.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Galery',
-        description: 'Interactive image gallery, simple but visually appealing, where images are clearly visible and stand out when hovering over them.',
+        description: 'Galería de imágenes interactiva, sencilla y visualmente llamativa. Las imágenes destacan al pasar el cursor, brindando una experiencia de usuario clara y agradable.',
         link: '/Galery/index.html',
         img: '/assets/Galery.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Testimonials',
-        description: 'Visually appealing and user-friendly testimonials section, where users can read featured reviews from other customers or employees. This design focuses on enhancing the user experience through interactivity and smooth transitions.',
+        description: 'Sección de testimonios moderna y fácil de usar, donde los usuarios pueden leer reseñas destacadas. El diseño se centra en la experiencia del usuario, con transiciones suaves e interactividad.',
         link: '/Testimonials/index.html',
         img: '/assets/Testi.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Apple',
-        description: 'This design is simple and focused on the visual presentation of the products, with a clean and attractive style that uses large images and brief texts to capture the visitor`s attention.',
+        description: 'Landing page enfocada en la presentación visual de productos Apple. Utiliza un estilo limpio y atractivo, con imágenes grandes y textos breves para captar la atención del visitante.',
         link: '/apple/index.html',
         img: '/assets/Apple.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Ice Cream',
-        description: 'This web design stands out for its fresh, modern and friendly style. With an attractive visual approach thanks to large images of products and environments, the site is fully adapted to be visually appealing, with quality images, well-defined call-to-action buttons and a clean and organized approach that facilitates navigation.',
+        description: 'Diseño web fresco, moderno y amigable, con imágenes de alta calidad y botones de llamada a la acción bien definidos. La estructura limpia facilita la navegación y resalta los productos.',
         link: '/helados/index.html',
         img: '/assets/IceCream.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Restaurant',
-        description: 'Burger Page stands out for its bold, modern and appetizing style. The site offers a striking visual experience with vibrant images of the burgers and the restaurant environment, while its design is fully optimized to engage the user, with high-quality photos, prominent call-to-action buttons and an organized structure that makes navigation easy.',
+        description: 'Página de hamburguesas con un estilo audaz y moderno. Imágenes vibrantes y botones destacados crean una experiencia visual impactante y una navegación sencilla para el usuario.',
         link: '/retaurant/index.html',
         img: '/assets/Hamburguer.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Mini Paint',
-        description: 'Paint-style drawing application features a simple, intuitive and easy-to-use interface. The site is optimized to offer a smooth experience, with accessible drawing tools, a large canvas to work on and well-defined action buttons, all in a clean and organized environment that makes it easy to navigate and use.',
+        description: 'Aplicación de dibujo tipo Paint con interfaz simple e intuitiva. Herramientas accesibles, lienzo amplio y botones bien definidos para una experiencia de usuario fluida y organizada.',
         link: '/MiniPaint/index.html',
         img: '/assets/MiniPaint.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Calculator',
-        description: 'This Calculator Page is a sleek, user-friendly tool designed to handle both basic and advanced mathematical operations with precision. Built with a responsive layout, it supports addition, subtraction, multiplication, division, and scientific functions like trigonometry and logarithms. It features a clean interface, memory storage, calculation history, and customizable settings for a personalized experience. Whether for academic, professional, or everyday use, this calculator offers a reliable and intuitive solution across all devices.',
+        description: 'Calculadora elegante y fácil de usar, capaz de realizar operaciones básicas y avanzadas. Diseño responsivo, historial de cálculos y funciones científicas para una experiencia completa en cualquier dispositivo.',
         link: '/Calculator/index.html',
         img: '/assets/Calculator.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Notes App',
-        description: 'This Notes App is a clean, minimalistic tool designed to help users quickly capture, organize, and manage their thoughts, tasks, and ideas. With features like real-time editing, search functionality, color-coded notes, and automatic saving, it provides a smooth and intuitive user experience. Fully responsive and accessible across devices, the app ensures your notes are always within reach, whether you`re planning your day or brainstorming new projects.',
+        description: 'Aplicación de notas minimalista y eficiente para capturar, organizar y gestionar ideas o tareas. Incluye edición en tiempo real, búsqueda, notas codificadas por color y guardado automático.',
         link: '/NotesApp/index.html',
         img: '/assets/NotesApp.png',
         technologies: [' HTML', 'CSS', 'Javascript']
       },
       {
         name: 'Tetris',
-        description: 'This Tetris App is a modern take on the classic puzzle game, designed with smooth controls, vibrant visuals, and responsive gameplay. Players can enjoy the timeless challenge of rotating and stacking falling blocks to clear lines and score points, with increasing difficulty to keep things exciting. Built for all devices, the app offers a seamless experience whether you`re playing casually or chasing high scores, combining nostalgia with a clean, contemporary interface.',
+        description: 'Versión moderna del clásico Tetris, con controles suaves, visuales vibrantes y jugabilidad responsiva. Ideal para disfrutar en cualquier dispositivo, combinando nostalgia y diseño contemporáneo.',
         link: '/Tetris/index.html',
         img: '/assets/Tetris.png',
         technologies: [' HTML', 'CSS', 'Javascript']
+      },
+      {
+        name: 'Finance app',
+        description: 'Aplicacion de registro financiero, con un diseño moderno y sencillo. Permite registrar ingresos y gastos, con un historial de transacciones y un resumen de balances.',
+        link: 'https://github.com/kevind5f/personal-finance-app',
+        img: '/assets/FinanceApp.png',
+        technologies: [' HTML', 'CSS', 'Javascript', 'Tailwind CSS', 'Vue.js', 'Nuxt.js', 'TypeScript']
       }
     ],
     contact: [
       {
         type: 'Redes Sociales',
         items: [
-          {name: 'WhastApp', link: 'https://wa.me/+51930110963'},
+          {name: 'WhastApp', link: 'https://wa.me/+51995094630'},
           {name: 'Instagram', link: 'https://www.instagram.com/omegalull.1/'},
           {name: 'Facebook', link: 'https://www.facebook.com/profile.php?id=100068875626308'}
         ]
@@ -128,13 +135,5 @@ export default createStore({
           {name: 'LinkedIn', link: 'https://www.linkedin.com/in/kevin-felices-ledesma-3210991bb/'}]
       }
     ]
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
   }
 })
