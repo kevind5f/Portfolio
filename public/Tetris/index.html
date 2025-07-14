@@ -1,596 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tetris</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .game-container {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .game-board {
-            width: 300px;
-            height: 600px;
-            background-color: #111;
-            border: 4px solid #333;
-            position: relative;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        
-        .info-panel {
-            width: 150px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .next-piece {
-            width: 150px;
-            height: 150px;
-            background-color: #222;
-            border: 2px solid #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .score-board {
-            background-color: #222;
-            padding: 15px;
-            border: 2px solid #333;
-            color: white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .controls {
-            background-color: #222;
-            padding: 15px;
-            border: 2px solid #333;
-            color: white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .cell {
-            width: 30px;
-            height: 30px;
-            position: absolute;
-            box-sizing: border-box;
-        }
-        
-        .cell.cyan {
-            background-color: #00FFFF;
-            border: 2px solid #00CCCC;
-        }
-        
-        .cell.blue {
-            background-color: #0000FF;
-            border: 2px solid #0000CC;
-        }
-        
-        .cell.orange {
-            background-color: #FF7F00;
-            border: 2px solid #CC6600;
-        }
-        
-        .cell.yellow {
-            background-color: #FFFF00;
-            border: 2px solid #CCCC00;
-        }
-        
-        .cell.green {
-            background-color: #00FF00;
-            border: 2px solid #00CC00;
-        }
-        
-        .cell.purple {
-            background-color: #800080;
-            border: 2px solid #660066;
-        }
-        
-        .cell.red {
-            background-color: #FF0000;
-            border: 2px solid #CC0000;
-        }
-        
-        button {
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-            width: 100%;
-        }
-        
-        button:hover {
-            background-color: #444;
-        }
-        
-        .game-over {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 24px;
-            display: none;
-        }
-    </style>
+    <title>Tetris - Juego Clásico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="game-container">
-        <div class="game-board" id="game-board">
-            <div class="game-over" id="game-over">
-                <div>GAME OVER</div>
-                <button id="restart-button">Reiniciar</button>
+    <!-- Estado de carga -->
+    <div class="loading" id="loading">
+        <div>
+            <i class="fas fa-gamepad"></i>
+            <br>
+            Cargando Tetris...
+            <br><br>
+            <button onclick="forceStart()" style="background: #00ff88; color: #000; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                Forzar Inicio
+            </button>
+        </div>
+    </div>
+
+    <!-- Contenedor del juego -->
+    <div class="game-container" id="game-container" style="display: none;">
+        <!-- Panel de controles (lado izquierdo) -->
+        <div class="controls-panel">
+            <div class="panel controls">
+                <h3>Controles</h3>
+                <div class="control-item">
+                    <span>Mover</span>
+                    <span class="control-key">← →</span>
+                </div>
+                <div class="control-item">
+                    <span>Rotar</span>
+                    <span class="control-key">↑</span>
+                </div>
+                <div class="control-item">
+                    <span>Bajar</span>
+                    <span class="control-key">↓</span>
+                </div>
+                <div class="control-item">
+                    <span>Caída</span>
+                    <span class="control-key">Espacio</span>
+                </div>
+            </div>
+            
+            <div class="panel main-buttons">
+                <h3>Acciones</h3>
+                <button class="btn secondary" id="pause-button">
+                    <i class="fas fa-pause"></i> Pausar
+                </button>
+                <button class="btn" id="new-game-button">
+                    <i class="fas fa-play"></i> Nuevo Juego
+                </button>
             </div>
         </div>
-        <div class="info-panel">
-            <div class="next-piece" id="next-piece"></div>
-            <div class="score-board">
-                <h3>Puntuación</h3>
-                <p id="score">0</p>
-                <h3>Líneas</h3>
-                <p id="lines">0</p>
-                <h3>Nivel</h3>
-                <p id="level">1</p>
+        
+        <!-- Tablero de juego (centro) -->
+        <div class="game-board" id="game-board">
+            <div class="game-over" id="game-over">
+                <h2>GAME OVER</h2>
+                <div class="final-score">
+                    Puntuación: <span id="final-score">0</span>
+                </div>
+                <button class="btn" id="restart-button">
+                    <i class="fas fa-redo"></i> Jugar de Nuevo
+                </button>
             </div>
-            <div class="controls">
-                <h3>Controles</h3>
-                <p>← → : Mover</p>
-                <p>↑ : Rotar</p>
-                <p>↓ : Bajar rápido</p>
-                <p>Espacio : Caída inmediata</p>
-                <button id="pause-button">Pausar</button>
-                <button id="new-game-button">Nuevo Juego</button>
+        </div>
+        
+        <!-- Panel de información (lado derecho) -->
+        <div class="info-panel">
+            <div class="panel next-piece" id="next-piece"></div>
+            
+            <div class="panel score-board">
+                <h3>Puntuación</h3>
+                <div class="score-value" id="score">0</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-label">Líneas</div>
+                        <div class="stat-value" id="lines">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Nivel</div>
+                        <div class="stat-value" id="level">1</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <script>
-        const BOARD_WIDTH = 10;
-        const BOARD_HEIGHT = 20;
-        const CELL_SIZE = 30;
-        const COLORS = ['cyan', 'blue', 'orange', 'yellow', 'green', 'purple', 'red'];
-        
-        // Formas de las piezas Tetris (tetrominos)
-        const SHAPES = [
-            // I
-            [
-                [0, 0, 0, 0],
-                [1, 1, 1, 1],
-                [0, 0, 0, 0],
-                [0, 0, 0, 0]
-            ],
-            // J
-            [
-                [1, 0, 0],
-                [1, 1, 1],
-                [0, 0, 0]
-            ],
-            // L
-            [
-                [0, 0, 1],
-                [1, 1, 1],
-                [0, 0, 0]
-            ],
-            // O
-            [
-                [1, 1],
-                [1, 1]
-            ],
-            // S
-            [
-                [0, 1, 1],
-                [1, 1, 0],
-                [0, 0, 0]
-            ],
-            // T
-            [
-                [0, 1, 0],
-                [1, 1, 1],
-                [0, 0, 0]
-            ],
-            // Z
-            [
-                [1, 1, 0],
-                [0, 1, 1],
-                [0, 0, 0]
-            ]
-        ];
-        
-        // Variables de juego
-        let board = Array(BOARD_HEIGHT).fill().map(() => Array(BOARD_WIDTH).fill(0));
-        let currentPiece = null;
-        let nextPiece = null;
-        let gameInterval = null;
-        let score = 0;
-        let lines = 0;
-        let level = 1;
-        let isPaused = false;
-        let gameOver = false;
-        let speed = 1000; // milisegundos entre cada caída
-        
-        // Elementos del DOM
-        const gameBoard = document.getElementById('game-board');
-        const nextPieceDisplay = document.getElementById('next-piece');
-        const scoreDisplay = document.getElementById('score');
-        const linesDisplay = document.getElementById('lines');
-        const levelDisplay = document.getElementById('level');
-        const pauseButton = document.getElementById('pause-button');
-        const newGameButton = document.getElementById('new-game-button');
-        const gameOverScreen = document.getElementById('game-over');
-        const restartButton = document.getElementById('restart-button');
-        
-        // Clase para representar las piezas
-        class Piece {
-            constructor(shape, color) {
-                this.shape = shape;
-                this.color = color;
-                this.x = Math.floor(BOARD_WIDTH / 2) - Math.floor(shape[0].length / 2);
-                this.y = 0;
-                this.cells = [];
-            }
+        // Función de debug para forzar el inicio
+        function forceStart() {
+            console.log('Force start button clicked');
+            const loading = document.getElementById('loading');
+            const gameContainer = document.getElementById('game-container');
             
-            // Renderiza la pieza en el tablero
-            render() {
-                // Elimina las celdas anteriores
-                this.clear();
-                
-                // Crea nuevas celdas para la posición actual
-                for (let y = 0; y < this.shape.length; y++) {
-                    for (let x = 0; x < this.shape[y].length; x++) {
-                        if (this.shape[y][x]) {
-                            const cell = document.createElement('div');
-                            cell.className = `cell ${this.color}`;
-                            cell.style.left = `${(this.x + x) * CELL_SIZE}px`;
-                            cell.style.top = `${(this.y + y) * CELL_SIZE}px`;
-                            gameBoard.appendChild(cell);
-                            this.cells.push(cell);
-                        }
-                    }
-                }
-            }
+            if (loading) loading.style.display = 'none';
+            if (gameContainer) gameContainer.style.display = 'flex';
             
-            // Limpia las celdas actuales
-            clear() {
-                this.cells.forEach(cell => gameBoard.removeChild(cell));
-                this.cells = [];
-            }
-            
-            // Comprueba si la pieza colisiona en la posición dada
-            collides(offsetX, offsetY, shape = this.shape) {
-                for (let y = 0; y < shape.length; y++) {
-                    for (let x = 0; x < shape[y].length; x++) {
-                        if (shape[y][x]) {
-                            const newX = this.x + x + offsetX;
-                            const newY = this.y + y + offsetY;
-                            
-                            // Verifica límites del tablero
-                            if (newX < 0 || newX >= BOARD_WIDTH || newY >= BOARD_HEIGHT) {
-                                return true;
-                            }
-                            
-                            // Verifica colisión con piezas existentes
-                            if (newY >= 0 && board[newY][newX]) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
-            
-            // Mueve la pieza hacia abajo
-            moveDown() {
-                if (!this.collides(0, 1)) {
-                    this.y++;
-                    this.render();
-                    return true;
-                }
-                return false;
-            }
-            
-            // Mueve la pieza a la izquierda
-            moveLeft() {
-                if (!this.collides(-1, 0)) {
-                    this.x--;
-                    this.render();
-                    return true;
-                }
-                return false;
-            }
-            
-            // Mueve la pieza a la derecha
-            moveRight() {
-                if (!this.collides(1, 0)) {
-                    this.x++;
-                    this.render();
-                    return true;
-                }
-                return false;
-            }
-            
-            // Rota la pieza en sentido horario
-            rotate() {
-                const rotatedShape = this.shape[0].map((_, index) =>
-                    this.shape.map(row => row[index]).reverse()
-                );
-                
-                if (!this.collides(0, 0, rotatedShape)) {
-                    this.shape = rotatedShape;
-                    this.render();
-                    return true;
-                }
-                return false;
-            }
-            
-            // Fija la pieza en el tablero
-            lock() {
-                for (let y = 0; y < this.shape.length; y++) {
-                    for (let x = 0; x < this.shape[y].length; x++) {
-                        if (this.shape[y][x]) {
-                            const boardY = this.y + y;
-                            const boardX = this.x + x;
-                            
-                            // Solo añade al tablero si está dentro de los límites
-                            if (boardY >= 0 && boardY < BOARD_HEIGHT && boardX >= 0 && boardX < BOARD_WIDTH) {
-                                board[boardY][boardX] = this.color;
-                            }
-                        }
-                    }
-                }
-            }
-            
-            // Hace caer la pieza hasta que colisione
-            hardDrop() {
-                while (this.moveDown()) {
-                    // Continúa bajando hasta que no pueda
-                }
-            }
-        }
-        
-        // Inicializa el juego
-        function initGame() {
-            // Limpia el tablero
-            board = Array(BOARD_HEIGHT).fill().map(() => Array(BOARD_WIDTH).fill(0));
-            clearBoard();
-            
-            // Resetea variables
-            score = 0;
-            lines = 0;
-            level = 1;
-            gameOver = false;
-            speed = 1000;
-            
-            // Actualiza pantallas
-            scoreDisplay.textContent = score;
-            linesDisplay.textContent = lines;
-            levelDisplay.textContent = level;
-            gameOverScreen.style.display = 'none';
-            
-            // Crea la primera pieza y la siguiente
-            createNewPiece();
-            currentPiece.render();
-            
-            // Inicia el intervalo del juego
-            if (gameInterval) clearInterval(gameInterval);
-            gameInterval = setInterval(gameLoop, speed);
-        }
-        
-        // Crea una nueva pieza
-        function createNewPiece() {
-            if (nextPiece) {
-                currentPiece = nextPiece;
-                currentPiece.x = Math.floor(BOARD_WIDTH / 2) - Math.floor(currentPiece.shape[0].length / 2);
-                currentPiece.y = 0;
+            // Inicializar el juego manualmente
+            if (typeof init === 'function') {
+                init();
             } else {
-                const randomIndex = Math.floor(Math.random() * SHAPES.length);
-                const shape = SHAPES[randomIndex];
-                const color = COLORS[randomIndex];
-                currentPiece = new Piece(shape, color);
-            }
-            
-            // Crea la siguiente pieza
-            const randomIndex = Math.floor(Math.random() * SHAPES.length);
-            const shape = SHAPES[randomIndex];
-            const color = COLORS[randomIndex];
-            nextPiece = new Piece(shape, color);
-            
-            // Renderiza la siguiente pieza en la pantalla
-            renderNextPiece();
-            
-            // Verifica si el juego ha terminado (la nueva pieza colisiona inmediatamente)
-            if (currentPiece.collides(0, 0)) {
-                endGame();
+                console.error('init function not found');
             }
         }
-        
-        // Renderiza la pieza siguiente en el panel lateral
-        function renderNextPiece() {
-            // Limpia el panel
-            while (nextPieceDisplay.firstChild) {
-                nextPieceDisplay.removeChild(nextPieceDisplay.firstChild);
-            }
-            
-            // Calcula el tamaño necesario para mostrar la pieza
-            const shapeWidth = nextPiece.shape[0].length * CELL_SIZE;
-            const shapeHeight = nextPiece.shape.length * CELL_SIZE;
-            const offsetX = (150 - shapeWidth) / 2;
-            const offsetY = (150 - shapeHeight) / 2;
-            
-            // Renderiza la pieza
-            for (let y = 0; y < nextPiece.shape.length; y++) {
-                for (let x = 0; x < nextPiece.shape[y].length; x++) {
-                    if (nextPiece.shape[y][x]) {
-                        const cell = document.createElement('div');
-                        cell.className = `cell ${nextPiece.color}`;
-                        cell.style.left = `${offsetX + x * CELL_SIZE}px`;
-                        cell.style.top = `${offsetY + y * CELL_SIZE}px`;
-                        nextPieceDisplay.appendChild(cell);
-                    }
-                }
-            }
-        }
-        
-        // Elimina todas las celdas del tablero visualmente
-        function clearBoard() {
-            const cells = document.querySelectorAll('#game-board .cell');
-            cells.forEach(cell => gameBoard.removeChild(cell));
-        }
-        
-        // Renderiza el estado actual del tablero
-        function renderBoard() {
-            // Primero borra todas las celdas fijas
-            const cells = document.querySelectorAll('#game-board .cell:not(.current)');
-            cells.forEach(cell => {
-                if (!currentPiece.cells.includes(cell)) {
-                    gameBoard.removeChild(cell);
-                }
-            });
-            
-            // Renderiza el tablero actual
-            for (let y = 0; y < BOARD_HEIGHT; y++) {
-                for (let x = 0; x < BOARD_WIDTH; x++) {
-                    if (board[y][x]) {
-                        const cell = document.createElement('div');
-                        cell.className = `cell ${board[y][x]}`;
-                        cell.style.left = `${x * CELL_SIZE}px`;
-                        cell.style.top = `${y * CELL_SIZE}px`;
-                        gameBoard.appendChild(cell);
-                    }
-                }
-            }
-        }
-        
-        // Verifica y elimina líneas completas
-        function checkLines() {
-            let linesCleared = 0;
-            
-            for (let y = BOARD_HEIGHT - 1; y >= 0; y--) {
-                // Verifica si la línea está completa
-                if (board[y].every(cell => cell)) {
-                    // Elimina la línea
-                    board.splice(y, 1);
-                    // Añade una nueva línea vacía al principio
-                    board.unshift(Array(BOARD_WIDTH).fill(0));
-                    linesCleared++;
-                    y++; // Vuelve a verificar la misma posición
-                }
-            }
-            
-            // Actualiza la puntuación y el nivel
-            if (linesCleared > 0) {
-                // Puntuación basada en el número de líneas eliminadas
-                const points = [0, 40, 100, 300, 1200][linesCleared] * level;
-                score += points;
-                lines += linesCleared;
-                
-                // Actualiza el nivel cada 10 líneas
-                level = Math.floor(lines / 10) + 1;
-                
-                // Actualiza la velocidad del juego
-                speed = Math.max(100, 1000 - (level - 1) * 100);
-                clearInterval(gameInterval);
-                gameInterval = setInterval(gameLoop, speed);
-                
-                // Actualiza la pantalla
-                scoreDisplay.textContent = score;
-                linesDisplay.textContent = lines;
-                levelDisplay.textContent = level;
-                
-                // Renderiza el tablero actualizado
-                renderBoard();
-            }
-        }
-        
-        // Bucle principal del juego
-        function gameLoop() {
-            if (isPaused || gameOver) return;
-            
-            // Si la pieza no puede moverse hacia abajo
-            if (!currentPiece.moveDown()) {
-                // Fija la pieza en el tablero
-                currentPiece.lock();
-                // Comprueba si hay líneas completas
-                checkLines();
-                // Crea una nueva pieza
-                createNewPiece();
-                // Renderiza la nueva pieza
-                currentPiece.render();
-            }
-        }
-        
-        // Finaliza el juego
-        function endGame() {
-            gameOver = true;
-            clearInterval(gameInterval);
-            gameOverScreen.style.display = 'flex';
-        }
-        
-        // Pausa/reanuda el juego
-        function togglePause() {
-            isPaused = !isPaused;
-            pauseButton.textContent = isPaused ? 'Reanudar' : 'Pausar';
-        }
-        
-        // Event Listeners
-        document.addEventListener('keydown', function(e) {
-            if (gameOver || isPaused) return;
-            
-            switch (e.key) {
-                case 'ArrowLeft':
-                    currentPiece.moveLeft();
-                    break;
-                case 'ArrowRight':
-                    currentPiece.moveRight();
-                    break;
-                case 'ArrowDown':
-                    if (!currentPiece.moveDown()) {
-                        currentPiece.lock();
-                        checkLines();
-                        createNewPiece();
-                        currentPiece.render();
-                    }
-                    break;
-                case 'ArrowUp':
-                    currentPiece.rotate();
-                    break;
-                case ' ': // Barra espaciadora
-                    currentPiece.hardDrop();
-                    currentPiece.lock();
-                    checkLines();
-                    createNewPiece();
-                    currentPiece.render();
-                    break;
-            }
-        });
-        
-        pauseButton.addEventListener('click', togglePause);
-        newGameButton.addEventListener('click', initGame);
-        restartButton.addEventListener('click', initGame);
-        
-        // Iniciar el juego
-        initGame();
     </script>
+    <script src="game.js"></script>
 </body>
 </html>

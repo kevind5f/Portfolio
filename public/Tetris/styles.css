@@ -1,0 +1,585 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Partículas de fondo */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float 6s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Contenedor principal del juego */
+.game-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+/* Panel de controles (lado izquierdo) */
+.controls-panel {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.controls-panel .panel {
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border: 2px solid #444;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.controls-panel h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: #00ff88;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Panel de controles */
+.controls {
+    text-align: center;
+}
+
+.control-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.control-key {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+/* Botones principales */
+.main-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    background: linear-gradient(145deg, #00ff88, #00cc6a);
+    color: #000;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(145deg, #00ffaa, #00ff88);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn.secondary {
+    background: linear-gradient(145deg, #666, #444);
+    color: #fff;
+}
+
+.btn.secondary:hover {
+    background: linear-gradient(145deg, #888, #666);
+}
+
+/* Tablero de juego */
+.game-board {
+    width: 300px;
+    height: 600px;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    border: 3px solid #333;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 
+        0 0 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.game-board::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+/* Panel de información (lado derecho) */
+.info-panel {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.panel {
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border: 2px solid #444;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.panel h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: #00ff88;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Panel de siguiente pieza */
+.next-piece {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.next-piece::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+/* Panel de puntuación */
+.score-board {
+    text-align: center;
+}
+
+.score-value {
+    font-family: 'Orbitron', monospace;
+    font-size: 24px;
+    font-weight: 700;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    margin: 10px 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-family: 'Orbitron', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 5px;
+}
+
+/* Celdas del juego */
+.cell {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.cell.cyan { background: linear-gradient(135deg, #00ffff, #00cccc); }
+.cell.blue { background: linear-gradient(135deg, #0066ff, #0033cc); }
+.cell.orange { background: linear-gradient(135deg, #ff6600, #cc5200); }
+.cell.yellow { background: linear-gradient(135deg, #ffff00, #cccc00); }
+.cell.green { background: linear-gradient(135deg, #00ff00, #00cc00); }
+.cell.purple { background: linear-gradient(135deg, #9900ff, #6600cc); }
+.cell.red { background: linear-gradient(135deg, #ff0000, #cc0000); }
+
+.cell.ghost {
+    background: transparent;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    box-shadow: none;
+}
+
+/* Pantalla de game over */
+.game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: 10px;
+}
+
+.game-over h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 36px;
+    font-weight: 900;
+    color: #ff0000;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.game-over .final-score {
+    font-family: 'Orbitron', monospace;
+    font-size: 24px;
+    color: #00ff88;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Puntuaciones altas */
+.high-scores {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.high-scores h4 {
+    color: #00ff88;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.score-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Overlay de pausa */
+.pause-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Orbitron', monospace;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 5;
+    display: none;
+}
+
+/* Animación de línea completada */
+.line-clear {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Orbitron', monospace;
+    font-size: 48px;
+    font-weight: 900;
+    color: #00ff88;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+    z-index: 15;
+    opacity: 0;
+    animation: lineClear 1s ease-out;
+}
+
+@keyframes lineClear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Indicador de nivel */
+.level-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ff88;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    z-index: 3;
+}
+
+/* Animaciones adicionales */
+.cell.landing {
+    animation: landing 0.3s ease-out;
+}
+
+@keyframes landing {
+    0% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.cell.clearing {
+    animation: clearing 0.5s ease-out;
+}
+
+@keyframes clearing {
+    0% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Loading state */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-family: 'Orbitron', monospace;
+    font-size: 24px;
+    text-align: center;
+}
+
+.loading i {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #00ff88;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .game-board {
+        width: 280px;
+        height: 560px;
+    }
+    
+    .controls-panel,
+    .info-panel {
+        width: 280px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .panel {
+        flex: 1;
+        min-width: 120px;
+        padding: 15px;
+    }
+    
+    .next-piece {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .game-board {
+        width: 250px;
+        height: 500px;
+    }
+    
+    .controls-panel,
+    .info-panel {
+        width: 250px;
+        flex-direction: column;
+    }
+    
+    .panel {
+        min-width: auto;
+        padding: 10px;
+    }
+    
+    .next-piece {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .btn {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00ff88, #00cc6a);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #00ffaa, #00ff88);
+} 
