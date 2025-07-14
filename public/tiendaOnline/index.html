@@ -1,174 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-     <title>Tienda online</title>
+     <title>Tienda online | Omegalull</title>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="estilos.css">
+     <meta name="description" content="Compra los mejores productos de tecnología, gaming y más en nuestra tienda online.">
+     <link rel="stylesheet" href="css/estilos.css">
      <link rel="stylesheet" href="../fonts/fontawesome/css/all.css">
      <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+     <script defer src="js/main.js"></script>
 </head>
 <body>
-     <!-- MENU PRINCIPAL -->
-     <nav class="menu-principal">
-          <div class="nav-imagen">
-               <img src="img/logo.png" alt="">
-          </div>
-
-          <div class="nav-enlaces">
-               <a href="" class="active">Inicio</a>
-               <a href="#productos">Productos</a>
-               <a href="#destacado">Destacado</a>
-               <a href="#contacto">Contacto</a>
-          </div>
-     </nav>
-
-     <header>
-          <div>
-               <h1>Lo que buscas, lo tenemos para tí</h1>
-               <button class="btn">Productos</button>
+     <!-- HEADER Y NAV -->
+     <header class="main-header">
+          <nav class="menu-principal">
+               <div class="nav-imagen">
+                    <img src="img/logo.png" alt="Logo Tienda Online Omegalull">
+               </div>
+               <div class="nav-enlaces">
+                    <a href="" class="active">Inicio</a>
+                    <a href="#productos">Productos</a>
+                    <a href="#destacado">Destacado</a>
+                    <a href="#contacto">Contacto</a>
+               </div>
+               <div class="nav-cart">
+                    <button id="cart-btn" aria-label="Ver carrito">
+                         <span class="fas fa-shopping-cart"></span>
+                         <span id="cart-count">0</span>
+                    </button>
+               </div>
+          </nav>
+          <div class="header-content">
+               <h1>Lo que buscas, lo tenemos para ti</h1>
+               <a href="#productos" class="btn">Ver productos</a>
           </div>
      </header>
 
-
+     <main>
      <!-- PRODUCTOS -->
      <section id="productos" class="productos">
           <h1 class="title">Nuestros productos</h1>
-
-          <div class="card">
-               <div class="img-card">
-                    <img src="img/product1.png" alt="">
-               </div>
-
-               <div class="content-card">
-                    <h3>PS5 Headset</h3>
-                    <h2 class="price">$99. <small>99</small></h2>
-                    <a href="#" class="btn buy">Comprar</a>
-               </div>
-          </div>
-
-          <div class="card">
-               <div class="img-card">
-                    <img src="img/product2.png" alt="">
-               </div>
-
-               <div class="content-card">
-                    <h3>PS5 Controller</h3>
-                    <h2 class="price">$59. <small>99</small></h2>
-                    <a href="#" class="btn buy">Comprar</a>
-               </div>
-          </div>
-
-          <div class="card">
-               <div class="img-card">
-                    <img src="img/product3.png" alt="">
-               </div>
-
-               <div class="content-card">
-                    <h3>Iphone 12 Pro Max</h3>
-                    <h2 class="price">$999. <small>99</small></h2>
-                    <a href="#" class="btn buy">Comprar</a>
-               </div>
-          </div>
-
-          <div class="card">
-               <div class="img-card">
-                    <img src="img/product4.png" alt="">
-               </div>
-
-               <div class="content-card">
-                    <h3>Airpods Pro</h3>
-                    <h2 class="price">$172. <small>82</small></h2>
-                    <a href="#" class="btn buy">Comprar</a>
-               </div>
-          </div>
-
-          <div class="card">
-               <div class="img-card">
-                    <img src="img/product5.png" alt="">
-               </div>
-
-               <div class="content-card">
-                    <h3>Galaxy S21</h3>
-                    <h2 class="price">$1100. <small>99</small></h2>
-                    <a href="#" class="btn buy">Comprar</a>
-               </div>
-          </div>
-
-          <div class="card">
-               <div class="img-card">
-                    <img src="img/product6.png" alt="">
-               </div>
-
-               <div class="content-card">
-                    <h3>Xbox Series S</h3>
-                    <h2 class="price">$399. <small>99</small></h2>
-                    <a href="#" class="btn buy">Comprar</a>
-               </div>
+          <div class="productos-grid">
+               <!-- Tarjeta Producto 1 -->
+               <article class="card">
+                    <div class="img-card">
+                         <img src="img/product1.png" alt="PS5 Headset">
+                    </div>
+                    <div class="content-card">
+                         <h3>PS5 Headset</h3>
+                         <h2 class="price">$99.<small>99</small></h2>
+                         <button class="btn buy" data-product="PS5 Headset">Comprar</button>
+                    </div>
+               </article>
+               <!-- Tarjeta Producto 2 -->
+               <article class="card">
+                    <div class="img-card">
+                         <img src="img/product2.png" alt="PS5 Controller">
+                    </div>
+                    <div class="content-card">
+                         <h3>PS5 Controller</h3>
+                         <h2 class="price">$59.<small>99</small></h2>
+                         <button class="btn buy" data-product="PS5 Controller">Comprar</button>
+                    </div>
+               </article>
+               <!-- Tarjeta Producto 3 -->
+               <article class="card">
+                    <div class="img-card">
+                         <img src="img/product3.png" alt="Iphone 12 Pro Max">
+                    </div>
+                    <div class="content-card">
+                         <h3>Iphone 12 Pro Max</h3>
+                         <h2 class="price">$999.<small>99</small></h2>
+                         <button class="btn buy" data-product="Iphone 12 Pro Max">Comprar</button>
+                    </div>
+               </article>
+               <!-- Tarjeta Producto 4 -->
+               <article class="card">
+                    <div class="img-card">
+                         <img src="img/product4.png" alt="Airpods Pro">
+                    </div>
+                    <div class="content-card">
+                         <h3>Airpods Pro</h3>
+                         <h2 class="price">$172.<small>82</small></h2>
+                         <button class="btn buy" data-product="Airpods Pro">Comprar</button>
+                    </div>
+               </article>
+               <!-- Tarjeta Producto 5 -->
+               <article class="card">
+                    <div class="img-card">
+                         <img src="img/product5.png" alt="Galaxy S21">
+                    </div>
+                    <div class="content-card">
+                         <h3>Galaxy S21</h3>
+                         <h2 class="price">$1100.<small>99</small></h2>
+                         <button class="btn buy" data-product="Galaxy S21">Comprar</button>
+                    </div>
+               </article>
+               <!-- Tarjeta Producto 6 -->
+               <article class="card">
+                    <div class="img-card">
+                         <img src="img/product6.png" alt="Xbox Series S">
+                    </div>
+                    <div class="content-card">
+                         <h3>Xbox Series S</h3>
+                         <h2 class="price">$399.<small>99</small></h2>
+                         <button class="btn buy" data-product="Xbox Series S">Comprar</button>
+                    </div>
+               </article>
           </div>
      </section>
-
 
      <section class="mensaje">
           <p>Te traemos solo lo mejor</p>
      </section>
 
-
      <section id="destacado" class="favorito">
-          <h1  class="title">Producto destacado</h1>
-
+          <h1 class="title">Producto destacado</h1>
           <div class="container-favorito">
                <div class="imagen-fav">
-                    <img src="img/product7.png" alt="">
+                    <img src="img/product7.png" alt="Sony Playstation 5">
                </div>
-
                <div class="content-fav">
                     <div class="header-fav">
                          <h1>Sony Playstation 5</h1>
                          <h3>Gamming console</h3>
                     </div>
-                    
                     <div class="text">
-                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non cum est maxime ipsum a culpa ut at iusto provident consequuntur, quibusdam enim voluptatem, nihil pariatur illum. Sint libero asperiores non!. </p>
-
+                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non cum est maxime ipsum a culpa ut at iusto provident consequuntur, quibusdam enim voluptatem, nihil pariatur illum. Sint libero asperiores non! </p>
                     </div>
-                    
-                    
                     <div class="content-inferior">
-                         <p class="price">$400. <small>00</small></p>
-                         <a href="" class="btn buy">Comprar</a>
+                         <p class="price">$400.<small>00</small></p>
+                         <button class="btn buy" data-product="Sony Playstation 5">Comprar</button>
                     </div>
                </div>
-          </div>   
+          </div>
      </section>
-
 
      <section id="contacto" class="suscribe">
-
-          <div class="search">
-               <input type="text" class="search-text" placeholder="Ingresa tu email">
-               <i class="fas fa-paper-plane search-icon"></i>
-          </div>
-
+          <form class="search" autocomplete="off">
+               <input type="email" class="search-text" placeholder="Ingresa tu email" aria-label="Email para suscripción">
+               <button type="submit" class="search-icon" aria-label="Suscribirse"><i class="fas fa-paper-plane"></i></button>
+          </form>
      </section>
+     </main>
 
-     <footer>
-          <div>
-               <a href="#"><span class="fab fa-facebook-f"></span></a>
+     <!-- CARRITO MODAL -->
+     <div id="cart-modal" class="cart-modal hidden" aria-hidden="true">
+          <div class="cart-modal-content">
+               <h2>Carrito de compras</h2>
+               <ul id="cart-items"></ul>
+               <p id="cart-total">Total: $0.00</p>
+               <button id="close-cart" class="btn">Cerrar</button>
           </div>
+     </div>
 
-          <div>
-               <a href="#"><span class="fab fa-twitter"></span></a>
+     <footer class="main-footer">
+          <div class="footer-social">
+               <a href="#" aria-label="Facebook"><span class="fab fa-facebook-f"></span></a>
+               <a href="#" aria-label="Twitter"><span class="fab fa-twitter"></span></a>
+               <a href="#" aria-label="Instagram"><span class="fab fa-instagram"></span></a>
+               <a href="#" aria-label="YouTube"><span class="fab fa-youtube"></span></a>
           </div>
-
-          <div>
-               <a href="#"><span class="fab fa-instagram"></span></a>
-          </div>
-
-          <div>
-               <a href="#"><span class="fab fa-youtube"></span></a>
+          <div class="footer-copy">
+               <p>&copy; 2024 Omegalull. Todos los derechos reservados.</p>
           </div>
      </footer>
+
+     <!-- Notificación -->
+     <div id="notification" class="notification hidden" role="alert"></div>
 </body>
 </html>
